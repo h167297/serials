@@ -1,0 +1,42 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.freedesktop.serials">
+    <method name="Dbus_serial_open">
+      <arg name="response" type="b" direction="out"/>
+    </method>
+    <method name="Dbus_serial_clear">
+    </method>
+    <method name="Dbus_serial_setPortName">
+      <arg name="portname" type="s" direction="in"/>
+    </method>
+    <method name="Dbus_serial_setBaudRate">
+      <arg name="baudrate" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_setDataBits">
+      <arg name="databit" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_setParity">
+      <arg name="parity" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_setStopBits">
+      <arg name="stopbits" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_setFlowControl">
+      <arg name="flowcontrol" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_close">
+    </method>
+    <method name="Dbus_serial_write">
+      <arg name="a" type="i" direction="in"/>
+      <arg name="n" type="i" direction="in"/>
+    </method>
+    <method name="Dbus_serial_write">
+      <arg name="data" type="s" direction="in"/>
+    </method>
+   <method name="Dbus_serial_readAll">
+    <arg name="response" type="s" direction="out" />
+  </method>
+  <signal name="Dbus_serial">
+  </signal>
+  </interface>
+</node>

@@ -1,0 +1,168 @@
+#!/bin/sh
+	
+	ldconfig
+
+	  if [ -d "/root/桌面" ]; then
+	      cp /usr/share/applications/串口助手.desktop /root/桌面
+	      chmod +x  /root/桌面/串口助手.desktop
+	  fi
+
+	  if [ -d "/root/Desktop" ]; then
+	      cp /usr/share/applications/串口助手.desktop /root/Desktop
+	      chmod +x  /root/Desktop/串口助手.desktop
+	  fi
+
+	   for FILENAME in /home/*; do
+
+	   if [ -d "${FILENAME}/桌面" ]; then
+		     usrname=${FILENAME##*/}
+		     su - ${usrname} -c " cp /usr/share/applications/串口助手.desktop /home/$usrname/桌面"
+		     chmod +x  /home/$usrname/桌面/串口助手.desktop
+	   fi
+
+	   if [ -d "${FILENAME}/Desktop" ]; then
+		     usrname=${FILENAME##*/}
+		       su - ${usrname} -c  "cp /usr/share/applications/串口助手.desktop /home/$usrname/Desktop"
+		      chmod +x  /home/$usrname/Desktop/串口助手.desktop
+	   fi
+
+	   done
+
+	libpath="/usr/lib/serials"
+	qtlibpath="/usr/lib/x86_64-linux-gnu"
+	pluginspath="/usr/lib/x86_64-linux-gnu/qt5/plugins"
+	libflags=0
+
+	  for libname in `cd ${qtlibpath}/&&ls libQt5*`;do
+
+	  if [ ${libname} = "libQt5SerialPort.so.5.3.3" ];then
+	      rm -f  ${libpath}/libQt5SerialPort.so.5.3.3
+	      	libflags=$((libflags=libflags+1))
+	  fi
+
+	  if [ ${libname} = "libQt5Core.so.5.2.1" ];then
+	      rm -f  ${libpath}/libQt5Core.so.5.2.1
+		libflags=$((libflags=libflags+2))
+	  fi
+
+	  if [ ${libname} = "libQt5DBus.so.5.2.1" ];then
+	      rm -f  ${libpath}/libQt5DBus.so.5.2.1
+	 	libflags=$((libflags=libflags+4))
+	  fi
+
+	  if [ ${libname} = "libQt5Gui.so.5.2.1" ];then
+	      rm -f  ${libpath}/libQt5Gui.so.5.2.1 
+		libflags=$((libflags=libflags+8)) 
+	  fi
+
+	  if [ ${libname} = "libQt5Network.so.5.2.1" ];then
+	      rm -f  ${libpath}/libQt5Network.so.5.2.1
+	 	libflags=$((libflags=libflags+16))
+	  fi
+
+	  if [ ${libname} = "libQt5Widgets.so.5.2.1" ];then
+	      rm -f  ${libpath}/libQt5Widgets.so.5.2.1
+		libflags=$((libflags=libflags+32))
+	  fi
+
+	  done
+
+	for pluginname in `cd ${pluginspath}/&&ls`;do
+
+	if [ ${pluginname} = "accessiblebridge" ];then
+		rm -rf ${libpath}/accessiblebridge
+        fi
+
+	if [ ${pluginname} = "generic" ];then
+		rm -rf ${libpath}/generic
+        fi
+
+	if [ ${pluginname} = "iconengines" ];then
+		rm -rf ${libpath}/iconengines
+        fi
+
+	if [ ${pluginname} = "platforminputcontexts" ];then
+		rm -rf ${libpath}/platforminputcontexts
+        fi
+
+	if [ ${pluginname} = "platforms" ];then
+		rm -rf ${libpath}/platforms
+        fi
+
+	if [ ${pluginname} = "platformthemes" ];then
+		rm -rf ${libpath}/platformthemes
+        fi
+
+	done
+
+	
+	if [ $((libflags&0x01)) -eq 0 ];then
+	      
+		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5.3.3
+		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5.3
+		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5
+		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so
+	fi
+
+	if [ $((libflags&0x02)) -eq 0 ];then
+	      
+		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5.2.1
+		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5.2
+		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5 
+		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so
+	fi
+
+	if [ $((libflags&0x04)) -eq 0 ];then
+	 
+	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5.2.1
+	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5.2
+	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5
+	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so
+	fi
+
+	if [ $((libflags&0x08)) -eq 0 ];then
+
+	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5.2.1
+	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5.2
+	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5
+	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so
+	fi
+
+	if [ $((libflags&0x10)) -eq 0 ];then
+	    
+	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5.2.1
+	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5.2
+	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5
+	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so
+	fi
+
+	if [ $((libflags&0x20)) -eq 0 ];then
+	      
+	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5.2.1
+	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5.2
+	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5
+	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so
+	fi
+
+	 if [ "`ls -A  ${libpath}`" = "" ]; then
+	     rm -r  ${libpath}
+	 fi
+
+	unset libpath
+        unset qtlibpath
+	unset pluginspath
+	unset libflags
+	      
+ 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+serials (1.0.0-1) Trusty; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- hening <h167297@qq.com>  Tue, 31 Mar 2015 20:47:40 +0800

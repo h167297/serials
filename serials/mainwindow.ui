@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>590</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>630</width>
+    <height>590</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>630</width>
+    <height>590</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Courier 10 Pitch</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>串口助手</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/new/prefix1/wICO.ico</normaloff>:/new/prefix1/wICO.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>641</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier 10 Pitch</family>
+     </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>360</y>
+      <width>641</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>611</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>串口号</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="SerialcomboBox"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="OpenCom">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>打开</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="CloseCom">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>关闭</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="ClearDisplay">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>清空显示</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5" colspan="2">
+      <widget class="QPushButton" name="SaveContent">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存内容</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QPushButton" name="Help">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>帮助信息</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>波特率</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="BaudComboBox">
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" colspan="2">
+      <widget class="QCheckBox" name="HexReccheckBox">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>十六进制接收</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>数据位</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="DataComboBox"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QCheckBox" name="DTRcheckBox">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>DTR</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QCheckBox" name="RTScheckBox">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>RTS</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QPushButton" name="OpenFile">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>打开文件</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5" colspan="2">
+      <widget class="QPushButton" name="SendFile">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>发送文件</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="7">
+      <widget class="QPushButton" name="CloseFile">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>关闭文件</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>校验位</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="ParityComboBox"/>
+     </item>
+     <item row="3" column="2" colspan="2">
+      <widget class="QCheckBox" name="HexSendcheckBox">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>十六进制发送</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;停止位&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="StopComboBox"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>流控制</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="FCComboBox"/>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLineEdit" name="Time">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>请输入正整数!</string>
+       </property>
+       <property name="text">
+        <string>1000</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLabel" name="label_7">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>毫秒</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="7" rowspan="3">
+      <widget class="QPushButton" name="SendData">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>91</width>
+         <height>101</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>发送</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4" rowspan="3" colspan="3">
+      <widget class="QTextEdit" name="textEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>91</width>
+         <height>101</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4" colspan="4">
+      <widget class="QLineEdit" name="FilePath">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2" colspan="2">
+      <widget class="QCheckBox" name="TimecheckBox">
+       <property name="font">
+        <font>
+         <family>Courier 10 Pitch</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>定时发送</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>630</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,70 @@
+#!/bin/sh
+
+ if [ -d "$HOME/桌面" ]; then
+      rm -f  $HOME/桌面/串口助手.desktop
+ fi
+
+ if [-d "$HOME/Desktop"];then
+     rm -f $HOME/Desktop/串口助手.desktop
+ fi
+
+libpath="/usr/lib/serials"
+qtlibpath="/usr/lib/x86_64-linux-gnu"
+
+ for filename in `cd ${libpath}/&&ls libQt5*`;do
+
+  if [ ${filename}/ = "libQt5SerialPort.so.5.3.3" ];then
+
+	rm -f  ${qtlibpath}/libQt5SerialPort.so.5.3.3
+	rm -f  ${qtlibpath}/libQt5SerialPort.so.5.3
+	rm -f  ${qtlibpath}/libQt5SerialPort.so.5
+	rm -f  ${qtlibpath}/libQt5SerialPort.so
+  fi
+
+  if [ ${filename} = "libQt5Core.so.5.2.1" ];then
+
+	rm -f  ${qtlibpath}/libQt5Core.so.5.2.1
+	rm -f  ${qtlibpath}/libQt5Core.so.5.2
+	rm -f  ${qtlibpath}/libQt5Core.so.5
+	rm -f  ${qtlibpath}/libQt5Core.so
+  fi
+
+  if [ ${filename} = "libQt5DBus.so.5.2.1" ];then
+
+	rm -f  ${qtlibpath}/libQt5DBus.so.5.2.1
+	rm -f  ${qtlibpath}/libQt5DBus.so.5.2
+	rm -f  ${qtlibpath}/libQt5DBus.so.5
+	rm -f  ${qtlibpath}/libQt5DBus.so
+  fi
+
+  if [ ${filename} = "libQt5Gui.so.5.2.1" ];then
+
+	rm -f  ${qtlibpath}/libQt5Gui.so.5.2.1 
+	rm -f  ${qtlibpath}/libQt5Gui.so.5.2
+	rm -f  ${qtlibpath}/libQt5Gui.so.5 
+	rm -f  ${qtlibpath}/libQt5Gui.so 
+  fi
+
+  if [ ${filename} = "libQt5Network.so.5.2.1" ];then
+
+	rm -f  ${qtlibpath}/libQt5Network.so.5.2.1
+	rm -f  ${qtlibpath}/libQt5Network.so.5.2
+	rm -f  ${qtlibpath}/libQt5Network.so.5
+	rm -f  ${qtlibpath}/libQt5Network.so
+
+  fi
+
+  if [ ${filename} = "libQt5Widgets.so.5.2.1" ];then
+
+	rm -f  ${qtlibpath}/libQt5Widgets.so.5.2.1
+	rm -f  ${qtlibpath}/libQt5Widgets.so.5.2
+	rm -f  ${qtlibpath}/libQt5Widgets.so.5
+	rm -f  ${qtlibpath}/libQt5Widgets.so
+  fi
+
+  done
+
+ rm -rf  ${libpath}
+
+	unset libpath
+        unset qtlibpath
