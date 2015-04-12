@@ -1,6 +1,6 @@
 serials/wICO.png /usr/share/pixmaps
 
-串口助手.desktop /usr/share/applications
+serialport-assistant.desktop /usr/share/applications
 
 serials/serials /usr/bin
 

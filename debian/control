@@ -2,8 +2,8 @@ Source: serials
 Section: utils
 Priority: optional
 Maintainer: hening <h167297@qq.com>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.4
+Build-Depends: debhelper (>=9.0.0)
+Standards-Version: 3.9.5
 Homepage: http://blog.csdn.net/he_ning
 #Vcs-Git: git://git.debian.org/collab-maint/serials.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/serials.git;a=summary

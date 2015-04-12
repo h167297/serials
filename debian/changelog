@@ -1,4 +1,4 @@
-serials (1.0.0-1) Trusty; urgency=low
+serials (1.0.0-1) trusty; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 

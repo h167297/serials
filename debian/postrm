@@ -1,11 +1,11 @@
 #!/bin/sh
-
+set -e
  if [ -d "$HOME/桌面" ]; then
-      rm -f  $HOME/桌面/串口助手.desktop
+      rm -f  $HOME/桌面/serialport-assistant.desktop
  fi
 
  if [-d "$HOME/Desktop"];then
-     rm -f $HOME/Desktop/串口助手.desktop
+     rm -f $HOME/Desktop/serialport-assistant.desktop
  fi
 
 libpath="/usr/lib/serials"

@@ -1,15 +1,15 @@
 #!/bin/sh
-	
+	set -e
 	ldconfig
 
 	  if [ -d "/root/桌面" ]; then
-	      cp /usr/share/applications/串口助手.desktop /root/桌面
-	      chmod +x  /root/桌面/串口助手.desktop
+	      cp /usr/share/applications/serialport-assistant.desktop /root/桌面
+	      chmod +x  /root/桌面/serialport-assistant.desktop
 	  fi
 
 	  if [ -d "/root/Desktop" ]; then
-	      cp /usr/share/applications/串口助手.desktop /root/Desktop
-	      chmod +x  /root/Desktop/串口助手.desktop
+	      cp /usr/share/applications/serialport-assistant.desktop /root/Desktop
+	      chmod +x  /root/Desktop/serialport-assistant.desktop
 	  fi
 
 	   for FILENAME in /home/*; do
@@ -17,13 +17,13 @@
 	   if [ -d "${FILENAME}/桌面" ]; then
 		     usrname=${FILENAME##*/}
 		     su - ${usrname} -c " cp /usr/share/applications/串口助手.desktop /home/$usrname/桌面"
-		     chmod +x  /home/$usrname/桌面/串口助手.desktop
+		     chmod +x  /home/$usrname/桌面/serialport-assistant.desktop
 	   fi
 
 	   if [ -d "${FILENAME}/Desktop" ]; then
 		     usrname=${FILENAME##*/}
 		       su - ${usrname} -c  "cp /usr/share/applications/串口助手.desktop /home/$usrname/Desktop"
-		      chmod +x  /home/$usrname/Desktop/串口助手.desktop
+		      chmod +x  /home/$usrname/Desktop/serialport-assistant.desktop
 	   fi
 
 	   done
