@@ -408,7 +408,7 @@ void MainWindow::on_CloseCom_clicked()
 {
     serialsdbus->serial_clear();
     serialsdbus->serial_close();
-    disconnect(serial,SIGNAL(readyRead()),this,SLOT(readSerial()));
+    disconnect(serialsdbus->iface,SIGNAL(Dbus_serial()),this,SLOT(readSerial()));
     ui->OpenCom->setEnabled(true);
     ui->CloseCom->setEnabled(false);
     ui->OpenFile->setEnabled(false);
@@ -614,7 +614,7 @@ void MainWindow::on_Help_clicked()
     ui->textBrowser->setPlainText("\"串口助手\"是一个通用的串口调试软件,提供windows与Linux两个版本;\n"
                                   "\"串口助手\"提供如下功能:\n"
                                   "①ASCII码、十六进制和中文收发\n"
-                                  "②自动扫描可用串口\n"
+                                  "②自动扫描可用串口（笔记本电脑上一般没有串口，若未接“U转串”，串口号一项将无内容）\n"
                                   "③文件发送和接收\n"
                                   "④缓冲区自动清空\n"
                                   "⑤在线参数更改\n"
@@ -622,7 +622,7 @@ void MainWindow::on_Help_clicked()
                                   "⑦定时发送\n"
                                   "⑧互动显示\n");
     ui->textBrowser->setTextColor(QColor("red"));
-    ui->textBrowser->insertPlainText( "注意：中文发送过程中更改串口参数可能导致乱码！\n");
+    ui->textBrowser->insertPlainText( "注意：中文为UTF-8编码,与GB2312编码不兼容,中文发送过程中更改串口参数可能导致乱码！\n");
     ui->textBrowser->setTextColor(QColor("black"));
     ui->textBrowser->insertPlainText("如果出现了乱码请关闭串口后再打开，如仍然有乱码，则重启本软件。\n");
 #ifdef Release
