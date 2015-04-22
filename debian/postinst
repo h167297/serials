@@ -16,13 +16,13 @@
 
 	   if [ -d "${FILENAME}/桌面" ]; then
 		     usrname=${FILENAME##*/}
-		     su - ${usrname} -c " cp /usr/share/applications/串口助手.desktop /home/$usrname/桌面"
+		     su - ${usrname} -c " cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/桌面"
 		     chmod +x  /home/$usrname/桌面/serialport-assistant.desktop
 	   fi
 
 	   if [ -d "${FILENAME}/Desktop" ]; then
 		     usrname=${FILENAME##*/}
-		       su - ${usrname} -c  "cp /usr/share/applications/串口助手.desktop /home/$usrname/Desktop"
+		       su - ${usrname} -c  "cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/Desktop"
 		      chmod +x  /home/$usrname/Desktop/serialport-assistant.desktop
 	   fi
 
