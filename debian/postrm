@@ -1,5 +1,10 @@
 #!/bin/sh
 set -e
+
+libpath="/usr/lib/serials"
+qtlibpath="/usr/lib/x86_64-linux-gnu"
+ bin="/usr/bin"
+
  if [ -d "$HOME/桌面" ]; then
       rm -f  $HOME/桌面/serialport-assistant.desktop
  fi
@@ -8,63 +13,6 @@ set -e
      rm -f $HOME/Desktop/serialport-assistant.desktop
  fi
 
-libpath="/usr/lib/serials"
-qtlibpath="/usr/lib/x86_64-linux-gnu"
-
- for filename in `cd ${libpath}/&&ls libQt5*`;do
-
-  if [ ${filename}/ = "libQt5SerialPort.so.5.3.3" ];then
-
-	rm -f  ${qtlibpath}/libQt5SerialPort.so.5.3.3
-	rm -f  ${qtlibpath}/libQt5SerialPort.so.5.3
-	rm -f  ${qtlibpath}/libQt5SerialPort.so.5
-	rm -f  ${qtlibpath}/libQt5SerialPort.so
-  fi
-
-  if [ ${filename} = "libQt5Core.so.5.2.1" ];then
-
-	rm -f  ${qtlibpath}/libQt5Core.so.5.2.1
-	rm -f  ${qtlibpath}/libQt5Core.so.5.2
-	rm -f  ${qtlibpath}/libQt5Core.so.5
-	rm -f  ${qtlibpath}/libQt5Core.so
-  fi
-
-  if [ ${filename} = "libQt5DBus.so.5.2.1" ];then
-
-	rm -f  ${qtlibpath}/libQt5DBus.so.5.2.1
-	rm -f  ${qtlibpath}/libQt5DBus.so.5.2
-	rm -f  ${qtlibpath}/libQt5DBus.so.5
-	rm -f  ${qtlibpath}/libQt5DBus.so
-  fi
-
-  if [ ${filename} = "libQt5Gui.so.5.2.1" ];then
-
-	rm -f  ${qtlibpath}/libQt5Gui.so.5.2.1 
-	rm -f  ${qtlibpath}/libQt5Gui.so.5.2
-	rm -f  ${qtlibpath}/libQt5Gui.so.5 
-	rm -f  ${qtlibpath}/libQt5Gui.so 
-  fi
-
-  if [ ${filename} = "libQt5Network.so.5.2.1" ];then
-
-	rm -f  ${qtlibpath}/libQt5Network.so.5.2.1
-	rm -f  ${qtlibpath}/libQt5Network.so.5.2
-	rm -f  ${qtlibpath}/libQt5Network.so.5
-	rm -f  ${qtlibpath}/libQt5Network.so
-
-  fi
-
-  if [ ${filename} = "libQt5Widgets.so.5.2.1" ];then
-
-	rm -f  ${qtlibpath}/libQt5Widgets.so.5.2.1
-	rm -f  ${qtlibpath}/libQt5Widgets.so.5.2
-	rm -f  ${qtlibpath}/libQt5Widgets.so.5
-	rm -f  ${qtlibpath}/libQt5Widgets.so
-  fi
-
-  done
-
- rm -rf  ${libpath}
-
-	unset libpath
-        unset qtlibpath
+unset libpath
+unset qtlibpath
+unset bin

@@ -30,18 +30,18 @@ class serialsDispatcher : public QObject
 public:
     explicit serialsDispatcher(QObject *parent = 0);
     ~serialsDispatcher();
-    bool serial_open();
-    void serial_clear();
-    void serial_setPortName(const QString &portname);
-    void serial_setBaudRate(int &baudrate);
-    void serial_setDataBits(const int &databit);
-    void serial_setParity(const int &parity);
-    void serial_setStopBits(const int &stopbits);
-    void serial_setFlowControl(const int &flowcontrol);
-    void serial_close();
-    void serial_write(int data);
-    void serial_write(const QString &data);
-    QByteArray serial_readAll();
+    bool open();
+    void clear();
+    void setPortName(const QString &portname);
+    void setBaudRate(const int &baudrate);
+    void setDataBits(const int &databit);
+    void setParity(const int &parity);
+    void setStopBits(const int &stopbits);
+    void setFlowControl(const int &flowcontrol);
+    void close();
+    void write(const int &data, const int &len);
+    void write(const QByteArray &data);
+    QByteArray readAll();
 public:
     QDBusInterface *iface;
 };

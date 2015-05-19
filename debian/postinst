@@ -1,157 +1,120 @@
 #!/bin/sh
-	set -e
-	ldconfig
+set -e
+libpath="/usr/lib/serials"
+qtlibpath="/usr/lib/x86_64-linux-gnu"
+pluginspath="/usr/lib/x86_64-linux-gnu/qt5/plugins"
+bin="/usr/bin"
+sbin="/usr/sbin"
 
-	  if [ -d "/root/桌面" ]; then
-	      cp /usr/share/applications/serialport-assistant.desktop /root/桌面
-	      chmod +x  /root/桌面/serialport-assistant.desktop
-	  fi
+  if [ -d "/root/桌面" ]; then
+      cp /usr/share/applications/serialport-assistant.desktop /root/桌面
+      chmod +x  /root/桌面/serialport-assistant.desktop
+  fi
 
-	  if [ -d "/root/Desktop" ]; then
-	      cp /usr/share/applications/serialport-assistant.desktop /root/Desktop
-	      chmod +x  /root/Desktop/serialport-assistant.desktop
-	  fi
+  if [ -d "/root/Desktop" ]; then
+      cp /usr/share/applications/serialport-assistant.desktop /root/Desktop
+      chmod +x  /root/Desktop/serialport-assistant.desktop
+  fi
 
-	   for FILENAME in /home/*; do
+   for FILENAME in /home/*; do
 
-	   if [ -d "${FILENAME}/桌面" ]; then
-		     usrname=${FILENAME##*/}
-		     su - ${usrname} -c " cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/桌面"
-		     chmod +x  /home/$usrname/桌面/serialport-assistant.desktop
-	   fi
+   if [ -d "${FILENAME}/桌面" ]; then
+	     usrname=${FILENAME##*/}
+	     su - ${usrname} -c " cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/桌面"
+	     chmod +x  /home/$usrname/桌面/serialport-assistant.desktop
+   fi
 
-	   if [ -d "${FILENAME}/Desktop" ]; then
-		     usrname=${FILENAME##*/}
-		       su - ${usrname} -c  "cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/Desktop"
-		      chmod +x  /home/$usrname/Desktop/serialport-assistant.desktop
-	   fi
+   if [ -d "${FILENAME}/Desktop" ]; then
+	     usrname=${FILENAME##*/}
+	       su - ${usrname} -c  "cp /usr/share/applications/serialport-assistant.desktop /home/$usrname/Desktop"
+	      chmod +x  /home/$usrname/Desktop/serialport-assistant.desktop
+   fi
 
-	   done
+   done
 
-	libpath="/usr/lib/serials"
-	qtlibpath="/usr/lib/x86_64-linux-gnu"
-	pluginspath="/usr/lib/x86_64-linux-gnu/qt5/plugins"
-	libflags=0
+chmod +x ${libpath}/serials.sh
+chmod +x ${libpath}/serialsdbus.sh
+chmod +x ${bin}/serials
+chmod +x ${sbin}/serialsdbus
 
-	  for libname in `cd ${qtlibpath}/&&ls libQt5*`;do
+#库的安装
+#if [ -f "${qtlibpath}/libQt5SerialPort.so.5.3.3" ] && [ -f "${qtlibpath}/libQt5SerialPort.so.5" ];then
+#	rm -f ${libpath}/libQt5SerialPort.so.5.3.3
+#else
+	 ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${libpath}/libQt5SerialPort.so.5
+#fi
 
-	  if [ ${libname} = "libQt5SerialPort.so.5.3.3" ];then
-	      rm -f  ${libpath}/libQt5SerialPort.so.5.3.3
-	      	libflags=$((libflags=libflags+1))
-	  fi
+#if [ -f "${qtlibpath}/libQt5Core.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Core.so.5" ];then
+#	rm -f ${libpath}/libQt5Core.so.5.2.1
+#else
+	 ln -s ${libpath}/libQt5Core.so.5.2.1  ${libpath}/libQt5Core.so.5
+#fi
 
-	  if [ ${libname} = "libQt5Core.so.5.2.1" ];then
-	      rm -f  ${libpath}/libQt5Core.so.5.2.1
-		libflags=$((libflags=libflags+2))
-	  fi
+#if [ -f "${qtlibpath}/libQt5DBus.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5DBus.so.5" ];then
+#	rm -f ${libpath}/libQt5DBus.so.5.2.1
+#else
+	 ln -s ${libpath}/libQt5DBus.so.5.2.1 ${libpath}/libQt5DBus.so.5
+#fi
 
-	  if [ ${libname} = "libQt5DBus.so.5.2.1" ];then
-	      rm -f  ${libpath}/libQt5DBus.so.5.2.1
-	 	libflags=$((libflags=libflags+4))
-	  fi
+#if [ -f "${qtlibpath}/libQt5Gui.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Gui.so.5" ];then
+#	rm -f ${libpath}/libQt5Gui.so.5.2.1
+#else
+	 ln -s ${libpath}/libQt5Gui.so.5.2.1 ${libpath}/libQt5Gui.so.5
+#fi
 
-	  if [ ${libname} = "libQt5Gui.so.5.2.1" ];then
-	      rm -f  ${libpath}/libQt5Gui.so.5.2.1 
-		libflags=$((libflags=libflags+8)) 
-	  fi
+#if [ -f "${qtlibpath}/libQt5Network.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Network.so.5" ];then
+#	rm -f ${libpath}/libQt5Network.so.5.2.1
+#else
+	 ln -s ${libpath}/libQt5Network.so.5.2.1 ${libpath}/libQt5Network.so.5
+#fi
 
-	  if [ ${libname} = "libQt5Network.so.5.2.1" ];then
-	      rm -f  ${libpath}/libQt5Network.so.5.2.1
-	 	libflags=$((libflags=libflags+16))
-	  fi
+#if [ -f "${qtlibpath}/libQt5Widgets.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Widgets.so.5" ];then
+#	rm -f ${libpath}/libQt5Widgets.so.5.2.1 
+#else
+	 ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${libpath}/libQt5Widgets.so.5
+#fi
 
-	  if [ ${libname} = "libQt5Widgets.so.5.2.1" ];then
-	      rm -f  ${libpath}/libQt5Widgets.so.5.2.1
-		libflags=$((libflags=libflags+32))
-	  fi
+#插件安装
+#if [ -d "${pluginspath}/accessiblebridge" ] || [ -f  "${bin}/accessiblebridge" ];then
+#	rm -rf ${libpath}/accessiblebridge
+#else
+#	ln -s ${libpath}/accessiblebridge ${bin}/
+#fi
 
-	  done
+#if [ -d "${pluginspath}/generic" ] || [ -f  "${bin}/generic" ];then
+#	rm -rf ${libpath}/generic
+#else 
+#	ln -s ${libpath}/generic ${bin}/
+#fi
 
-	for pluginname in `cd ${pluginspath}/&&ls`;do
+#if [ -d "${pluginspath}/iconengines" ] || [ -f  "${bin}/iconengines" ];then
+#	rm -rf ${libpath}/iconengines
+#else
+#	ln -s ${libpath}/iconengines ${bin}/
+#fi
 
-	if [ ${pluginname} = "accessiblebridge" ];then
-		rm -rf ${libpath}/accessiblebridge
-        fi
+#if [ -d "${pluginspath}/platforminputcontexts" ] || [ -f  "${bin}/platforminputcontexts" ];then
+#	rm -rf ${libpath}/platforminputcontexts
+#else 
+#	ln -s ${libpath}/platforminputcontexts ${bin}/
+#fi
 
-	if [ ${pluginname} = "generic" ];then
-		rm -rf ${libpath}/generic
-        fi
+#if [ -d "${pluginspath}/platforms" ] || [ -f  "${bin}/platforms" ];then
+#	rm -rf ${libpath}/platforms
+#else
+# 	ln -s ${libpath}/platforms ${bin}/
+#fi
 
-	if [ ${pluginname} = "iconengines" ];then
-		rm -rf ${libpath}/iconengines
-        fi
+#if [ -d "${pluginspath} /platformthemes" ] || [ -f  "${bin}/platformthemes" ];then
+#	rm -rf ${libpath}/platformthemes
+#else
+#	ln -s ${libpath}/platformthemes ${bin}/ 
+#fi
 
-	if [ ${pluginname} = "platforminputcontexts" ];then
-		rm -rf ${libpath}/platforminputcontexts
-        fi
-
-	if [ ${pluginname} = "platforms" ];then
-		rm -rf ${libpath}/platforms
-        fi
-
-	if [ ${pluginname} = "platformthemes" ];then
-		rm -rf ${libpath}/platformthemes
-        fi
-
-	done
-
-	
-	if [ $((libflags&0x01)) -eq 0 ];then
-	      
-		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5.3.3
-		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5.3
-		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so.5
-		ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${qtlibpath}/libQt5SerialPort.so
-	fi
-
-	if [ $((libflags&0x02)) -eq 0 ];then
-	      
-		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5.2.1
-		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5.2
-		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so.5 
-		ln -s ${libpath}/libQt5Core.so.5.2.1  ${qtlibpath}/libQt5Core.so
-	fi
-
-	if [ $((libflags&0x04)) -eq 0 ];then
-	 
-	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5.2.1
-	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5.2
-	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so.5
-	      ln -s ${libpath}/libQt5DBus.so.5.2.1 ${qtlibpath}/libQt5DBus.so
-	fi
-
-	if [ $((libflags&0x08)) -eq 0 ];then
-
-	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5.2.1
-	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5.2
-	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so.5
-	      ln -s ${libpath}/libQt5Gui.so.5.2.1 ${qtlibpath}/libQt5Gui.so
-	fi
-
-	if [ $((libflags&0x10)) -eq 0 ];then
-	    
-	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5.2.1
-	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5.2
-	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so.5
-	      ln -s ${libpath}/libQt5Network.so.5.2.1 ${qtlibpath}/libQt5Network.so
-	fi
-
-	if [ $((libflags&0x20)) -eq 0 ];then
-	      
-	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5.2.1
-	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5.2
-	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so.5
-	      ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${qtlibpath}/libQt5Widgets.so
-	fi
-
-	 if [ "`ls -A  ${libpath}`" = "" ]; then
-	     rm -r  ${libpath}
-	 fi
-
-	unset libpath
-        unset qtlibpath
-	unset pluginspath
-	unset libflags
+unset libpath
+unset qtlibpath
+unset pluginspath
+unset bin
 	      
  
 

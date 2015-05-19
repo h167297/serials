@@ -29,19 +29,22 @@ void Thread::stop()
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),sendflag(true),
+    ui(new Ui::MainWindow),sendflag(true),fileopen(false),
     currentOpenPath("."),currentSavePath(".")
 {
     ui->setupUi(this);
-    serialsdbus = new serialsDispatcher;
+    #ifdef Q_OS_LINUX
+    serial = new serialsDispatcher;
+    #endif
     int x=(QApplication::desktop()->width() - this->width())/2;
     int y=(QApplication::desktop()->height() - this->height())/2;
     setGeometry ( x,y, this->width(),this->height());
 
     localHostName = QHostInfo::localHostName();
     Welcome = QString("大家好!我是"+localHostName+"。");
-
+    #ifdef Q_OS_WIN
     serial = new QSerialPort;
+    #endif
     time = new QTimer;
     intValidator = new QIntValidator(0, 4000000);
     ui->BaudComboBox->setInsertPolicy(QComboBox::NoInsert);
@@ -99,19 +102,21 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->StopComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(updateSettings()));
     connect(ui->FCComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(updateSettings()));
 
+    this->installEventFilter(this);
+    ui->textEdit->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete serial;
     delete time;
     delete intValidator;
-    serialsdbus->serial_close();
+
+    serial->close();
     Scan_serialport.stop();
     Scan_serialport.terminate();
-    Scan_serialport.wait();
-    delete serialsdbus;
+    Scan_serialport.wait();  //等待线程结束
+    delete serial;
 }
 
 void MainWindow::update_PortName(const QStringList v_old_name, const QStringList v_new_name)
@@ -189,11 +194,72 @@ bool MainWindow::hex_Format_check(const QString vhex)
     return true;
 }
 
+void MainWindow::CRC_Parity(char *CRCArray, char nCount)
+{
+    unsigned char i,j;
+
+    for (j=0;j<nCount;j++)
+    {
+        CRC16.CRCByte.Lo^=CRCArray[j];
+        for (i=0;i<8;i++)
+        {
+          if (CRC16.CRCWord & 0x0001)
+         {
+           CRC16.CRCWord =CRC16.CRCWord >>1;
+           CRC16.CRCWord =CRC16.CRCWord ^ 0xA001;//生成多项式为 G(X)=X^16+X^15+X^2+1
+         }
+          else
+               CRC16.CRCWord =CRC16.CRCWord >>1;
+        }
+    }
+
+    CRC16H=CRC16.CRCByte.Hi;
+    CRC16L=CRC16.CRCByte.Lo;
+}
+
+bool MainWindow::eventFilter(QObject *object, QEvent *event)
+{
+    Q_ASSERT(object == ui->textEdit||object == this);
+
+        if(object == this)
+        {
+              if (event->type() == QEvent::KeyPress)
+              {
+                  QKeyEvent *KeyEvent = static_cast<QKeyEvent*>(event);
+                  if (KeyEvent->key() == Qt::Key_Return&&(KeyEvent->modifiers() & Qt::ControlModifier))
+                  {
+                      if(ui->SendData->isEnabled())
+                      {
+                        emit ui->SendData->clicked(true);
+                      }
+
+                      return true;
+                  }
+              }
+        }
+
+          if(object == ui->textEdit)
+          {
+
+              //qDebug()<<event->type();
+              QMouseEvent *MouseEvent = static_cast<QMouseEvent*>(event);
+              //qDebug()<<MouseEvent->button();
+             if(MouseEvent->button() == Qt::MidButton)
+             {
+                 ui->textEdit->clear();
+                 return true;
+             }
+          }
+
+
+    return QMainWindow::eventFilter(object,event);
+}
+
 
 void MainWindow::updateSettings()
 {
     currentSettings.name = ui->SerialcomboBox->currentText();
-
+    #ifdef Q_OS_LINUX
     if (ui->BaudComboBox->currentIndex() == 7) {
         currentSettings.baudRate = ui->BaudComboBox->currentText().toInt();
     } else {
@@ -213,12 +279,40 @@ void MainWindow::updateSettings()
     currentSettings.flowControl = ui->FCComboBox->itemData(ui->FCComboBox->currentIndex()).toInt();
     currentSettings.stringFlowControl = ui->FCComboBox->currentText();
 
-    serialsdbus->serial_setPortName(currentSettings.name);
-    serialsdbus->serial_setBaudRate(currentSettings.baudRate);
-    serialsdbus->serial_setDataBits(currentSettings.dataBits);
-    serialsdbus->serial_setParity(currentSettings.parity);
-    serialsdbus->serial_setStopBits(currentSettings.stopBits);
-    serialsdbus->serial_setFlowControl(currentSettings.flowControl);
+    #endif
+
+    #ifdef Q_OS_WIN
+    if (ui->BaudComboBox->currentIndex() == 7) {
+        currentSettings.baudRate = ui->BaudComboBox->currentText().toInt();
+    } else {
+        currentSettings.baudRate = static_cast<QSerialPort::BaudRate>(
+                    ui->BaudComboBox->itemData(ui->BaudComboBox->currentIndex()).toInt());
+    }
+    currentSettings.stringBaudRate = QString::number(currentSettings.baudRate);
+
+    currentSettings.dataBits = static_cast<QSerialPort::DataBits>(
+                ui->DataComboBox->itemData(ui->DataComboBox->currentIndex()).toInt());
+    currentSettings.stringDataBits = ui->DataComboBox->currentText();
+
+    currentSettings.parity = static_cast<QSerialPort::Parity>(
+                ui->ParityComboBox->itemData(ui->ParityComboBox->currentIndex()).toInt());
+    currentSettings.stringParity = ui->ParityComboBox->currentText();
+
+    currentSettings.stopBits = static_cast<QSerialPort::StopBits>(
+                ui->StopComboBox->itemData(ui->StopComboBox->currentIndex()).toInt());
+    currentSettings.stringStopBits = ui->StopComboBox->currentText();
+
+    currentSettings.flowControl = static_cast<QSerialPort::FlowControl>(
+                ui->FCComboBox->itemData(ui->FCComboBox->currentIndex()).toInt());
+    currentSettings.stringFlowControl = ui->FCComboBox->currentText();
+    #endif
+    serial->setPortName(currentSettings.name);
+    serial->setBaudRate(currentSettings.baudRate);
+    serial->setDataBits(currentSettings.dataBits);
+    serial->setParity(currentSettings.parity);
+    serial->setStopBits(currentSettings.stopBits);
+    serial->setFlowControl(currentSettings.flowControl);
+
     if(!ui->OpenCom->isEnabled())
     {
         ui->statusBar->showMessage(tr(" 连接到 %1 : %2, %3, %4, %5, %6")
@@ -248,12 +342,13 @@ bool MainWindow::on_OpenFile_clicked()
      }
 
      QTextStream in(&File);//新建流对象，指向选定文件
-     //in.setCodec("GB2312");// Windows汉字本地码为GB2312,因为Qt默认以UTF-8解码中文,读取windows文本需要加上这句
-     FileContent = in.readAll(); //转码改在服务端进行
+    #ifdef Q_OS_WIN
+     in.setCodec("GB2312");// Windows汉字本地码为GB2312,因为Qt默认以UTF-8解码中文,读取windows文本需要加上这句
+    #endif
      //FileContent = in.readAll().toLocal8Bit();//转化为Linux的本地码
-     //FileContent = in.readAll().toUtf8();//Linux汉字本地码为UTF-8,与上句效果相同
+     FileContent = in.readAll().toUtf8();//Linux汉字本地码为UTF-8,与上句效果相同
      ui->textBrowser->setTextColor(QColor("black"));
-     ui->textBrowser->setPlainText(FileContent.toUtf8()+"\n");//将文件中所有的内容写到文本浏览器中
+     ui->textBrowser->setPlainText(FileContent+"\n");//将文件中所有的内容写到文本浏览器中
 
      currentOpenPath = QFileInfo(openFileName).canonicalFilePath();
 
@@ -265,7 +360,14 @@ bool MainWindow::on_OpenFile_clicked()
 
    }
 
-   ui->SendFile->setEnabled(true);
+   if(!ui->OpenCom->isEnabled())
+   {
+    ui->SendFile->setEnabled(true);
+   }
+   else
+   {
+       fileopen=true;
+   }
 
    return true;
 }
@@ -305,12 +407,12 @@ void MainWindow::readSerial()
     if(sendflag)
     {
         sendflag = false;
-        ui->textBrowser->append(currentSettings.name+":\n");
+        ui->textBrowser->append("["+currentSettings.name+"]"+":\n");
     }
 
     if(ui->HexReccheckBox->isChecked())
     {
-       temp = serialsdbus->serial_readAll().toHex().toUpper();
+       temp = serial->readAll().toHex().toUpper();
        for(int i=0;i<temp.length();++i)
        {
            ui->textBrowser->insertPlainText(QString(temp.at(i)));
@@ -323,7 +425,9 @@ void MainWindow::readSerial()
     else
     {
         static QByteArray TEMP ="";static uchar code = 3;
-        temp = serialsdbus->serial_readAll();
+
+        temp = serial->readAll();
+
         for(int i=0;i<temp.length();++i)
         {
             if((temp.at(i)&0x80)!=0)//如果文本无英文换行或标点
@@ -360,29 +464,47 @@ void MainWindow::on_OpenCom_clicked()
 {  
        //serialsdbus->serial_close();
        updateSettings();
-     if(serialsdbus->serial_open()){
+        #ifdef Q_OS_LINUX
+         if(serial->open())
+        #endif
 
-            serialsdbus->serial_clear();
+       #ifdef Q_OS_WIN
 
-            serialsdbus->serial_setPortName(currentSettings.name);
-            serialsdbus->serial_setBaudRate(currentSettings.baudRate);
-            serialsdbus->serial_setDataBits(currentSettings.dataBits);
-            serialsdbus->serial_setParity(currentSettings.parity);
-            serialsdbus->serial_setStopBits(currentSettings.stopBits);
-            serialsdbus->serial_setFlowControl(currentSettings.flowControl);
+        if (serial->open(QIODevice::ReadWrite))
+       #endif
+        {
 
-            connect(serialsdbus->iface,SIGNAL(Dbus_serial()),this,SLOT(readSerial()));//信号和槽函数连接，当串口缓冲区有数据时，进行读串口操作
+            serial->clear();
+
+            serial->setPortName(currentSettings.name);
+            serial->setBaudRate(currentSettings.baudRate);
+            serial->setDataBits(currentSettings.dataBits);
+            serial->setParity(currentSettings.parity);
+            serial->setStopBits(currentSettings.stopBits);
+            serial->setFlowControl(currentSettings.flowControl);
+           #ifdef Q_OS_LINUX
+            connect(serial->iface,SIGNAL(Dbus_serial()),this,SLOT(readSerial()));//信号和槽函数连接，当串口缓冲区有数据时，进行读串口操作
+           #endif
+
+           #ifdef Q_OS_WIN
+            connect(serial,SIGNAL(readyRead()),this,SLOT(readSerial()));
+           #endif
             connect(time,SIGNAL(timeout()),this,SLOT(timeHandle()));
 
             ui->OpenCom->setEnabled(false);
             ui->CloseCom->setEnabled(true);
-            ui->OpenFile->setEnabled(true);
-            ui->textEdit->setEnabled(true);
+//            ui->OpenFile->setEnabled(true);
+//            ui->textEdit->setEnabled(true);
             ui->textBrowser->clear();
             ui->SaveContent->setEnabled(false);
             ui->ClearDisplay->setEnabled(false);
 
             ui->SerialcomboBox->setEnabled(false);
+
+            if(fileopen)
+            {
+                ui->SendFile->setEnabled(true);
+            }
 
             if(ui->TimecheckBox->isChecked())
             {
@@ -404,22 +526,35 @@ void MainWindow::on_OpenCom_clicked()
     }
 }
 
+
+
+
+
 void MainWindow::on_CloseCom_clicked()
 {
-    serialsdbus->serial_clear();
-    serialsdbus->serial_close();
-    disconnect(serialsdbus->iface,SIGNAL(Dbus_serial()),this,SLOT(readSerial()));
+    serial->clear();
+    serial->close();
+
+    #ifdef Q_OS_LINUX
+    disconnect(serial->iface,SIGNAL(Dbus_serial()),this,SLOT(readSerial()));
+    #endif
+
+    #ifdef Q_OS_WIN
+    disconnect(serial,SIGNAL(readyRead()),this,SLOT(readSerial()));
+    #endif
     ui->OpenCom->setEnabled(true);
     ui->CloseCom->setEnabled(false);
-    ui->OpenFile->setEnabled(false);
-    ui->textEdit->setEnabled(false);
+//    ui->OpenFile->setEnabled(false);
+//    ui->textEdit->setEnabled(false);
     ui->SendData->setEnabled(false);
+    ui->SendFile->setEnabled(false);
 
     ui->SerialcomboBox->setEnabled(true);
     ui->statusBar->showMessage(tr(" 未连接！"));
     time->stop();
     disconnect(time,SIGNAL(timeout()),this,SLOT(timeHandle()));
 }
+
 
 void MainWindow::on_BaudComboBox_currentIndexChanged(int index)
 {
@@ -434,20 +569,102 @@ void MainWindow::on_BaudComboBox_currentIndexChanged(int index)
 
 void MainWindow::on_SendData_clicked()
 {
-    serialsdbus->serial_clear();
+
+    serial->clear();
     ui->textBrowser->setTextColor(QColor("green"));
     if(ui->HexSendcheckBox->isChecked())
     {
+        char a[2];
         QStringList temp = ui->textEdit->toPlainText().split(QRegExp(" "),QString::SkipEmptyParts);
+        if(ui->CRC16checkBox->isChecked()) //先这样，以后完善
+        {
+            CRC16.CRCWord=0xffff;
+            for(QStringList::const_iterator it=temp.cbegin();it!=temp.cend();++it)
+            {
+                if((*it).length()>2)
+                {
+                    QByteArray text="";
+                    for(int i=0;i<(*it).length();++i)
+                    {
+                        text += (*it).at(i);
+                        if((i+1)%2==0)
+                        {
+                            a[0] = text.toInt(0,16);
+                            #ifdef Q_OS_LINUX
+                            serial->write(text.toInt(0,16),1);
+                            #endif
+                            #ifdef Q_OS_WIN
+                            serial->write(a,1);
+                            #endif
+                            CRC_Parity(a,1);
+                            text="";
+                        }
+                    }
 
-        for(QStringList::const_iterator it=temp.cbegin();it!=temp.cend();++it)
-        {       
-            serialsdbus->serial_write((*it).toInt(0,16));
+                }
+                else
+                {
+                    a[0] = (*it).toInt(0,16);
+                    #ifdef Q_OS_LINUX
+                    serial->write((*it).toInt(0,16),1);
+                    #endif
+                    #ifdef Q_OS_WIN
+                    serial->write(a,1);
+                    #endif
+                    CRC_Parity(a,1);
+                }
+            }
+            #ifdef Q_OS_LINUX
+            serial->write(CRC16L,1);
+            serial->write(CRC16H,1);
+            #endif
+
+            #ifdef Q_OS_WIN
+            a[0] = CRC16L;a[1] = CRC16H; //这里为MODBUS协议定制，先发送低字节，再发送高字节
+            serial->write(a,2);
+            #endif
+        }
+        else
+        {
+            for(QStringList::const_iterator it=temp.cbegin();it!=temp.cend();++it)
+            {
+                if((*it).length()>2)
+                {
+                    QByteArray text="";
+                    for(int i=0;i<(*it).length();++i)
+                    {
+                        text += (*it).at(i);
+                        if((i+1)%2==0)
+                        {
+                            a[0] = text.toInt(0,16);
+                            #ifdef Q_OS_LINUX
+                            serial->write(text.toInt(0,16),1);
+                            #endif
+                            #ifdef Q_OS_WIN
+                            serial->write(a,1);
+                            #endif
+                            text="";
+                        }
+                    }
+
+                }
+                else
+                {
+                    #ifdef Q_OS_LINUX
+                    serial->write((*it).toInt(0,16),1);
+                    #endif
+
+                    #ifdef Q_OS_WIN
+                    a[0] = (*it).toInt(0,16);
+                    serial->write(a,1);
+                    #endif
+                }
+            }
         }
     }
     else
     {
-        serialsdbus->serial_write(ui->textEdit->toPlainText());
+        serial->write(ui->textEdit->toPlainText().toUtf8());
     }
 
     sendflag = true;
@@ -459,7 +676,20 @@ void MainWindow::on_SendData_clicked()
 //        }
 
 //        ui->textBrowser->insertPlainText(localHostName+":\n"+ui->textEdit->toPlainText()+"\n");
-        ui->textBrowser->append(localHostName+":\n"+ui->textEdit->toPlainText());
+         ui->textBrowser->append("["+localHostName+"]"+":\n"+ui->textEdit->toPlainText());
+
+         if(ui->HexSendcheckBox->isChecked())  //这种做法很傻，暂时这样做。
+         {
+             if(ui->CRC16checkBox->isChecked())
+             {
+               char a[1];
+               ui->textBrowser->setTextColor(QColor("red"));
+               a[0] = CRC16L;
+               ui->textBrowser->insertPlainText(QByteArray(a,1).toHex().toUpper()+" ");
+               a[0] = CRC16H;
+               ui->textBrowser->insertPlainText(QByteArray(a,1).toHex().toUpper());
+             }
+         }
     }
 }
 
@@ -487,7 +717,7 @@ void MainWindow::on_textEdit_textChanged()
             if(!ui->TimecheckBox->isChecked())
             {
                 ui->SendData->setEnabled(true);
-                ui->TimecheckBox->setEnabled(true);
+//                ui->TimecheckBox->setEnabled(true);
             }
         }
     }
@@ -496,7 +726,7 @@ void MainWindow::on_textEdit_textChanged()
         ui->SendData->setEnabled(false);
         ui->TimecheckBox->setChecked(false);
         time->stop();
-        ui->TimecheckBox->setEnabled(false);
+//        ui->TimecheckBox->setEnabled(false);
     }
 }
 
@@ -547,6 +777,7 @@ void MainWindow::on_HexSendcheckBox_clicked(bool checked)
                 ui->textEdit->insertPlainText(" ");
             }
         }
+        ui->CRC16checkBox->setCheckable(true);
     }
     else
     {
@@ -561,6 +792,9 @@ void MainWindow::on_HexSendcheckBox_clicked(bool checked)
         }
         ui->textEdit->insertPlainText(QString(content));
         content = "";
+
+        ui->CRC16checkBox->setChecked(false);
+        ui->CRC16checkBox->setCheckable(false);
     }
     if(flag)
     {
@@ -571,9 +805,11 @@ void MainWindow::on_HexSendcheckBox_clicked(bool checked)
 
 void MainWindow::on_SendFile_clicked()
 {
-    serialsdbus->serial_clear();
     ui->textBrowser->setTextColor(QColor("green"));
-    serialsdbus->serial_write(FileContent);
+
+    serial->clear();
+    serial->write(FileContent);
+
     sendflag = true;
 
         if(!ui->textBrowser->toPlainText().isEmpty())
@@ -581,7 +817,7 @@ void MainWindow::on_SendFile_clicked()
              ui->textBrowser->insertPlainText("\n");
         }
 
-        ui->textBrowser->insertPlainText(localHostName+":\n"+FileContent+"\n");
+        ui->textBrowser->insertPlainText("["+localHostName+"]"+":\n"+FileContent+"\n");
 
 }
 
@@ -643,4 +879,5 @@ void MainWindow::on_CloseFile_clicked()
     ui->FilePath->clear();
     ui->SendFile->setEnabled(false);
     ui->CloseFile->setEnabled(false);
+    fileopen=false;
 }

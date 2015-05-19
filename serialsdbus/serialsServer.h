@@ -38,8 +38,8 @@ public slots:
     void Dbus_serial_setParity(int parity);
     void Dbus_serial_setPortName(const QString &portname);
     void Dbus_serial_setStopBits(int stopbits);
-    void Dbus_serial_write(const QString &data);
-    void Dbus_serial_write(int data);
+    void Dbus_serial_write(const QByteArray &data);
+    void Dbus_serial_write(int data,int len);
     QByteArray Dbus_serial_readAll();
 public:
     QSerialPort *serial;

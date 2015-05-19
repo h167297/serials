@@ -9,8 +9,9 @@
  * before re-generating it.
  */
 
-#ifndef SERIALSADAPTOR_H_1428222553
-#define SERIALSADAPTOR_H_1428222553
+#ifndef SERIALSADAPTOR_H_1430370688
+#define SERIALSADAPTOR_H_1430370688
+
 #include <QtCore/QObject>
 #include <QtDBus/QtDBus>
 QT_BEGIN_NAMESPACE
@@ -55,8 +56,8 @@ class serialsAdaptor: public QDBusAbstractAdaptor
 "    </method>\n"
 "    <method name=\"Dbus_serial_close\"/>\n"
 "    <method name=\"Dbus_serial_write\">\n"
-"      <arg direction=\"in\" type=\"i\" name=\"a\"/>\n"
-"      <arg direction=\"in\" type=\"i\" name=\"n\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"data\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"len\"/>\n"
 "    </method>\n"
 "    <method name=\"Dbus_serial_write\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
@@ -83,8 +84,8 @@ public Q_SLOTS: // METHODS
     void Dbus_serial_setParity(int parity);
     void Dbus_serial_setPortName(const QString &portname);
     void Dbus_serial_setStopBits(int stopbits);
-    void Dbus_serial_write(const QString &data);
-    void Dbus_serial_write(int data);
+    void Dbus_serial_write(const QByteArray &data);
+    void Dbus_serial_write(int data, int len);
 Q_SIGNALS: // SIGNALS
     void Dbus_serial();
 private slots:

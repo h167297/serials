@@ -27,8 +27,8 @@
     <method name="Dbus_serial_close">
     </method>
     <method name="Dbus_serial_write">
-      <arg name="a" type="i" direction="in"/>
-      <arg name="n" type="i" direction="in"/>
+      <arg name="data" type="i" direction="in"/>
+      <arg name="len" type="i" direction="in"/>
     </method>
     <method name="Dbus_serial_write">
       <arg name="data" type="s" direction="in"/>

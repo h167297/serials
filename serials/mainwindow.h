@@ -9,8 +9,12 @@
 #include <QTimer>
 #include <QHostInfo>
 #include <QDesktopWidget>
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QDebug>
+#ifdef Q_OS_LINUX
 #include <serialsdispatcher.h>
-
+#endif
 namespace Ui {
     class MainWindow;
 }
@@ -41,6 +45,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    #ifdef Q_OS_LINUX
     struct Settings {
         QString name;
         qint32 baudRate;
@@ -55,11 +60,31 @@ public:
         QString stringFlowControl;
         bool localEchoEnabled;
     };
+    #endif
+
+#ifdef Q_OS_WIN
+    struct Settings {
+        QString name;
+        qint32 baudRate;
+        QString stringBaudRate;
+        QSerialPort::DataBits dataBits;
+        QString stringDataBits;
+        QSerialPort::Parity parity;
+        QString stringParity;
+        QSerialPort::StopBits stopBits;
+        QString stringStopBits;
+        QSerialPort::FlowControl flowControl;
+        QString stringFlowControl;
+        bool localEchoEnabled;
+    };
+#endif
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
         Settings settings() const;
         bool time_Format_check(const QString vtime );
         bool hex_Format_check(const QString vhex);
+        void CRC_Parity(char *CRCArray, char nCount);
+        bool eventFilter(QObject *object, QEvent *event);
 
 private slots:
     void update_PortName(const QStringList v_old_name,const QStringList v_new_name);
@@ -103,19 +128,37 @@ private slots:
 private:
     Ui::MainWindow *ui;
     bool sendflag;
+    bool fileopen;
+#ifdef Q_OS_WIN
     QSerialPort *serial;
+#endif
     Settings currentSettings;
     QIntValidator *intValidator;
     QTimer *time;
     QString currentOpenPath;
     QString openFileName;
-    QString FileContent;
+    QByteArray FileContent;
     QString currentSavePath;
     QString saveFileName;
     QString localHostName;
     QString Welcome;
     Thread Scan_serialport;
-    serialsDispatcher *serialsdbus;
+    #ifdef Q_OS_LINUX
+    serialsDispatcher *serial;
+    #endif
+
+    char CRC16H; //暂时这样用，以后再改
+    char CRC16L;
+
+    union CRC     //网上原程序是将这个联合体放在CRC_Parity函数内部
+    {
+        unsigned short CRCWord;
+        struct
+        {
+          char  Lo;
+          char  Hi;
+        }CRCByte;
+     }CRC16;
 };
 
 #endif // MAINWINDOW_H

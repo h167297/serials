@@ -45,7 +45,6 @@ bool serialsServer::Dbus_serial_open()
 {
     if(serial->open(QIODevice::ReadWrite))
     {
-        connect(serial,SIGNAL(readyRead()),this,SLOT(readSerial()));
         return true;
     }
     return false;
@@ -81,15 +80,15 @@ void serialsServer::Dbus_serial_setStopBits(int stopbits)
     serial->setStopBits(static_cast<QSerialPort::StopBits>(stopbits));
 }
 
-void serialsServer::Dbus_serial_write(const QString &data)
+void serialsServer::Dbus_serial_write(const QByteArray &data)
 {
-    serial->write(data.toUtf8());
+    serial->write(data);
 }
 
-void serialsServer::Dbus_serial_write(int data)
+void serialsServer::Dbus_serial_write(int data, int len)
 {
     char temp[1]={char(data)};
-    serial->write(temp,1);
+    serial->write(temp,len);
 }
 
 QByteArray serialsServer::Dbus_serial_readAll()

@@ -9,7 +9,7 @@ inst2.path = /usr/share/polkit-1/actions/
 inst3.files += conf/org.freedesktop.serials.conf
 inst3.path = /etc/dbus-1/system.d/
 target.source += $$TARGET
-target.path = /usr/sbin
+target.path = /usr/lib/serials
 INSTALLS += inst1 \
     inst2 \
     inst3 \

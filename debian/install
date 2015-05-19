@@ -2,7 +2,12 @@ serials/wICO.png /usr/share/pixmaps
 
 serialport-assistant.desktop /usr/share/applications
 
-serials/serials /usr/bin
+serials/serials /usr/lib/serials
+serials/serials.sh /usr/lib/serials
+serialsdbus/serials /usr/bin
+
+serialsdbus/serialsdbus.sh /usr/lib/serials
+serials/serialsdbus /usr/sbin
 
 serials.conf /etc/ld.so.conf.d
 

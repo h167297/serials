@@ -35,19 +35,19 @@ serialsAdaptor::~serialsAdaptor()
 
 void serialsAdaptor::Dbus_serial_clear()
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_clear
+    // handle method call org.freedesktop.serials.Dbus_serial_clear
     QMetaObject::invokeMethod(parent(), "Dbus_serial_clear");
 }
 
 void serialsAdaptor::Dbus_serial_close()
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_close
+    // handle method call org.freedesktop.serials.Dbus_serial_close
     QMetaObject::invokeMethod(parent(), "Dbus_serial_close");
 }
 
 bool serialsAdaptor::Dbus_serial_open()
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_open
+    // handle method call org.freedesktop.serials.Dbus_serial_open
     bool response;
     QMetaObject::invokeMethod(parent(), "Dbus_serial_open", Q_RETURN_ARG(bool, response));
     return response;
@@ -55,7 +55,7 @@ bool serialsAdaptor::Dbus_serial_open()
 
 QByteArray serialsAdaptor::Dbus_serial_readAll()
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_readAll
+    // handle method call org.freedesktop.serials.Dbus_serial_readAll
     QByteArray response;
     QMetaObject::invokeMethod(parent(), "Dbus_serial_readAll", Q_RETURN_ARG(QByteArray, response));
     return response;
@@ -63,50 +63,50 @@ QByteArray serialsAdaptor::Dbus_serial_readAll()
 
 void serialsAdaptor::Dbus_serial_setBaudRate(int baudrate)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setBaudRate
+    // handle method call org.freedesktop.serials.Dbus_serial_setBaudRate
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setBaudRate", Q_ARG(int, baudrate));
 }
 
 void serialsAdaptor::Dbus_serial_setDataBits(int databit)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setDataBits
+    // handle method call org.freedesktop.serials.Dbus_serial_setDataBits
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setDataBits", Q_ARG(int, databit));
 }
 
 void serialsAdaptor::Dbus_serial_setFlowControl(int flowcontrol)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setFlowControl
+    // handle method call org.freedesktop.serials.Dbus_serial_setFlowControl
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setFlowControl", Q_ARG(int, flowcontrol));
 }
 
 void serialsAdaptor::Dbus_serial_setParity(int parity)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setParity
+    // handle method call org.freedesktop.serials.Dbus_serial_setParity
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setParity", Q_ARG(int, parity));
 }
 
 void serialsAdaptor::Dbus_serial_setPortName(const QString &portname)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setPortName
+    // handle method call org.freedesktop.serials.Dbus_serial_setPortName
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setPortName", Q_ARG(QString, portname));
 }
 
 void serialsAdaptor::Dbus_serial_setStopBits(int stopbits)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_setStopBits
+    // handle method call org.freedesktop.serials.Dbus_serial_setStopBits
     QMetaObject::invokeMethod(parent(), "Dbus_serial_setStopBits", Q_ARG(int, stopbits));
 }
 
-void serialsAdaptor::Dbus_serial_write(const QString &data)
+void serialsAdaptor::Dbus_serial_write(const QByteArray &data)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_write
-    QMetaObject::invokeMethod(parent(), "Dbus_serial_write", Q_ARG(QString, data));
+    // handle method call org.freedesktop.serials.Dbus_serial_write
+    QMetaObject::invokeMethod(parent(), "Dbus_serial_write", Q_ARG(QByteArray, data));
 }
 
-void serialsAdaptor::Dbus_serial_write(int data)
+void serialsAdaptor::Dbus_serial_write(int data, int len)
 {
-    // handle method call org.freedesktop.ukdbusdemo.Dbus_serial_write
-    QMetaObject::invokeMethod(parent(), "Dbus_serial_write", Q_ARG(int, data));
+    // handle method call org.freedesktop.serials.Dbus_serial_write
+    QMetaObject::invokeMethod(parent(), "Dbus_serial_write", Q_ARG(int, data), Q_ARG(int, len));
 }
 
 void serialsAdaptor::Dbus_readSerial()
