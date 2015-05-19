@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-libpath="/usr/lib/serials"
-if [ -x "${libpath}/serials.sh" ];then
- 	"${libpath}/serials.sh"
-fi
-unset libpath

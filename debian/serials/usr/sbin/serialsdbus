@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-libpath="/usr/lib/serials"
-ldconfig
-if [ -x "${libpath}/serialsdbus.sh" ];then
- 	"${libpath}/serialsdbus.sh"
-fi
-unset libpath
