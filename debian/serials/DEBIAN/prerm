@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+libpath="/usr/lib/serials"
+qtlibpath="/usr/lib/x86_64-linux-gnu"
+ bin="/usr/bin"
+
+ rm -f ${libpath}/libQt5SerialPort.so.5
+ rm -f ${libpath}/libQt5Core.so.5
+ rm -f ${libpath}/libQt5DBus.so.5 
+ rm -f ${libpath}/libQt5Gui.so.5
+ rm -f ${libpath}/libQt5Network.so.5
+ rm -f ${libpath}/libQt5Widgets.so.5
+
+unset libpath
+unset qtlibpath
+unset bin
