@@ -15,36 +15,28 @@
 #ifdef Q_OS_LINUX
 #include <serialsdispatcher.h>
 #endif
+#include "scanthread.h"
+
+//#define HODE_SIZE
+
+
+#define USE_INDICATOR
+
 namespace Ui {
     class MainWindow;
 }
 
 class QIntValidator;
 
-class Thread :public QThread
-{
-    Q_OBJECT
-
-public :
-    Thread();
-    void stop();
-
-protected:
-    void run();
-
-signals:
-    void portname_changed(const QStringList v_old_name,const QStringList v_new_name);
-private:
-    QStringList port_name;
-    QStringList old_port_name;
-    volatile bool stopped;
-};
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
     #ifdef Q_OS_LINUX
     struct Settings {
         QString name;
@@ -78,13 +70,19 @@ public:
         bool localEchoEnabled;
     };
 #endif
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
         Settings settings() const;
         bool time_Format_check(const QString vtime );
         bool hex_Format_check(const QString vhex);
         void CRC_Parity(char *CRCArray, char nCount);
+protected:
         bool eventFilter(QObject *object, QEvent *event);
+        void mouseMoveEvent(QMouseEvent *e);
+//        void mousePressEvent(QMouseEvent *e);
+        void mouseReleaseEvent(QMouseEvent *);
+
+signals:
+    void portname_changed(const QStringList v_old_name,const QStringList v_new_name);
+    void status_changed();
 
 private slots:
     void update_PortName(const QStringList v_old_name,const QStringList v_new_name);
@@ -93,14 +91,16 @@ private slots:
 
     bool on_SaveContent_clicked();
 
-    void on_OpenCom_clicked();
-
     void on_BaudComboBox_currentIndexChanged(int index);
 
+    #ifndef USE_INDICATOR
+    void on_OpenCom_clicked();
+
     void on_CloseCom_clicked();
+    #endif
 
     void on_SendData_clicked();
-    
+
     void on_ClearDisplay_clicked();
 
     void on_textEdit_textChanged();
@@ -112,6 +112,8 @@ private slots:
     void readSerial();
 
     void timeHandle();
+
+    void display_update_handle();
 
     void on_TimecheckBox_clicked(bool checked);
 
@@ -125,24 +127,67 @@ private slots:
 
     void on_CloseFile_clicked();
 
+    void on_btnMenu_Max_clicked();
+
+    void on_btnMenu_clicked();
+
+    void on_btnMenu_Min_clicked();
+
+    void on_btnMenu_Close_clicked();
+
+    void on_btnMenu_lock_clicked();
+
+    #ifdef USE_INDICATOR
+    void on_OpenCom_clicked();
+    #endif
+
+    void on_DTRcheckBox_clicked(bool checked);
+
+    void on_RTScheckBox_clicked(bool checked);
+
+    void PinoutSignals();
+
+    void on_SerialcomboBox_currentTextChanged(const QString &arg1);
+
+    void counter_clear();
+
 private:
     Ui::MainWindow *ui;
     bool sendflag;
     bool fileopen;
+    bool portOpened;
+    bool isCustomBaudRate;
+    bool isFirst;  //只在初始化时有效
+    bool autoOpen;
 #ifdef Q_OS_WIN
     QSerialPort *serial;
 #endif
     Settings currentSettings;
     QIntValidator *intValidator;
     QTimer *time;
-    QString currentOpenPath;
+    QTimer *display_update;
     QString openFileName;
     QByteArray FileContent;
+    QByteArray DisplayBuffer;
+    QString currentOpenPath;
     QString currentSavePath;
+    QString currentSettingsPath;
     QString saveFileName;
     QString localHostName;
     QString Welcome;
-    Thread Scan_serialport;
+    ScanThread *ScanPort;
+    QLabel *status_1st;
+    QLabel *status_2nd;
+
+    struct Permanent
+    {
+        QLabel *per_1st;
+        QLabel *per_2nd;
+        QPushButton *per_3rd;
+    };
+
+    Permanent *status_per;
+
     #ifdef Q_OS_LINUX
     serialsDispatcher *serial;
     #endif
@@ -150,7 +195,7 @@ private:
     char CRC16H; //暂时这样用，以后再改
     char CRC16L;
 
-    union CRC     //网上原程序是将这个联合体放在CRC_Parity函数内部
+    union CRC     //
     {
         unsigned short CRCWord;
         struct
@@ -159,6 +204,34 @@ private:
           char  Hi;
         }CRCByte;
      }CRC16;
+   //下面是跟窗口样式有关的变量和函数
+    QPoint mousePoint;
+    bool mousePressed;
+    bool max;
+    bool lock;
+    bool top;
+    bool firstmove;
+    bool initial;
+    int RecSize;
+    int SendSize;
+    QRect location;
+    QRect available;
+    float winRateX;
+    QSerialPort::PinoutSignals  new_status;
+    QSerialPort::PinoutSignals  old_status;
+    void InitStyle();
+    int  TitleWidth(int width);
+    void writeSettings();
+    void readSettings();
+    void imgPathToHtml(QString &path);
+    void addLabelOnStatusBar(QLabel *&statusLabel, const QSize &minisize, QSizePolicy sizepolicy);
+    void addPermanent(Permanent *& per);
+    void setPermanent(Permanent *& per, Qt::Alignment align, QChar text,const QString &tips);
+    void originPermanent(Permanent *& per);
+    void sendFileTips();
+#ifdef Q_OS_LINUX
+    bool isInternal(QPoint mouse, QRect window);
+#endif
 };
 
 #endif // MAINWINDOW_H

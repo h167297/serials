@@ -106,7 +106,7 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>提示</string>
+         <string>消息</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -257,7 +257,7 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::StrongFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true"/>

@@ -17,11 +17,15 @@ INSTALLS += inst1 \
 
 HEADERS += \
     serialsAdaptor.h \
-    serialsServer.h
+    serialsServer.h \
+    commonserver.h \
+    commonAdaptor.h
 
 SOURCES += main.cpp \
     serialsAdaptor.cpp \
-    serialsServer.cpp
+    serialsServer.cpp \
+    commonserver.cpp \
+    commonAdaptor.cpp
 
 
 unix|win32: LIBS += -lQt5SerialPort

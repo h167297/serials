@@ -2,7 +2,7 @@ Source: serials
 Section: utils
 Priority: optional
 Maintainer: hening <h167297@qq.com>
-Build-Depends: debhelper (>=9.0.0)
+Build-Depends: debhelper (>=9.0.0),qtbase5-dev,qt5-qmake,qt5-default,libqt5serialport5-dev,libudev-dev
 Standards-Version: 3.9.5
 Homepage: http://blog.csdn.net/he_ning
 #Vcs-Git: git://git.debian.org/collab-maint/serials.git
@@ -11,7 +11,7 @@ Homepage: http://blog.csdn.net/he_ning
 Package: serials
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description:The serials is a very useful serial port debug tool
+Description:"串口助手"是非常好用的串口调试工具！  The serials is a very useful serial port debug tool!
 	提供如下功能:
 	①ASCII码、十六进制和中文收发
 	②自动扫描可用串口

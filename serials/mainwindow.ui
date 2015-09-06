@@ -12,480 +12,1402 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>630</width>
-    <height>590</height>
+    <width>650</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>630</width>
-    <height>590</height>
+    <width>650</width>
+    <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>630</width>
-    <height>590</height>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="font">
    <font>
     <family>Courier 10 Pitch</family>
+    <pointsize>12</pointsize>
    </font>
   </property>
   <property name="windowTitle">
    <string>串口助手</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/new/prefix1/wICO.ico</normaloff>:/new/prefix1/wICO.ico</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/image/appICO.png</normaloff>:/image/appICO.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>631</width>
-      <height>331</height>
-     </rect>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>650</width>
+     <height>618</height>
+    </size>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
     </property>
-    <property name="font">
-     <font>
-      <family>Courier 10 Pitch</family>
-     </font>
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>360</y>
-      <width>641</width>
-      <height>20</height>
-     </rect>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="bottomMargin">
+     <number>0</number>
     </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>611</width>
-      <height>231</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>串口号</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="SerialcomboBox"/>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="OpenCom">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>打开</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3" colspan="2">
-      <widget class="QPushButton" name="CloseCom">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>关闭</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="5">
-      <widget class="QPushButton" name="ClearDisplay">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>清空显示</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="6">
-      <widget class="QPushButton" name="SaveContent">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>保存内容</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="7">
-      <widget class="QPushButton" name="Help">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>帮助信息</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>波特率</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="BaudComboBox">
-       <property name="currentIndex">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>数据位</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="DataComboBox"/>
-     </item>
-     <item row="2" column="2">
-      <widget class="QCheckBox" name="DTRcheckBox">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>DTR</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3" colspan="2">
-      <widget class="QCheckBox" name="RTScheckBox">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>RTS</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="5">
-      <widget class="QPushButton" name="OpenFile">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>打开文件</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="6">
-      <widget class="QPushButton" name="SendFile">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>发送文件</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="7">
-      <widget class="QPushButton" name="CloseFile">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>关闭文件</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>校验位</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="ParityComboBox"/>
-     </item>
-     <item row="3" column="5" rowspan="3" colspan="2">
-      <widget class="QTextEdit" name="textEdit">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>91</width>
-         <height>101</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="toolTip">
-        <string>单击鼠标中键清空！</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="7" rowspan="3">
-      <widget class="QPushButton" name="SendData">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>91</width>
-         <height>101</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="toolTip">
-        <string>按Ctrl+Enter键发送数据。</string>
-       </property>
-       <property name="text">
-        <string>发送</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;停止位&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QComboBox" name="StopComboBox"/>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>流控制</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QComboBox" name="FCComboBox"/>
-     </item>
-     <item row="5" column="2">
-      <widget class="QCheckBox" name="TimecheckBox">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>定时发送</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="3">
-      <widget class="QLineEdit" name="Time">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="toolTip">
-        <string>请输入正整数!</string>
-       </property>
-       <property name="text">
-        <string>1000</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="4">
-      <widget class="QLabel" name="label_7">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>毫秒</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2" colspan="3">
-      <widget class="QCheckBox" name="HexSendcheckBox">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>十六进制发送</string>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2" colspan="3">
-      <widget class="QCheckBox" name="CRC16checkBox">
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>CRC-16</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2" colspan="3">
-      <widget class="QCheckBox" name="HexReccheckBox">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>十六进制接收</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5" colspan="3">
-      <widget class="QLineEdit" name="FilePath">
-       <property name="font">
-        <font>
-         <family>Courier 10 Pitch</family>
-        </font>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+    <item>
+     <widget class="QWidget" name="widget_title" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>650</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>32</height>
+       </size>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lab_Ico">
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lab_Title">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>11</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>串口助手</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu_lock">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>前端显示</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>菜单</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu_Min">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>最小化</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu_Max">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>最大化</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu_Close">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>关闭</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>340</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier 10 Pitch</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Courier 10 Pitch'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextSelectableByMouse</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>14</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="text">
+         <string>串口号</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="SerialcomboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="OpenCom">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>打开</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" colspan="2">
+       <widget class="QLabel" name="Indicator">
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>状态指示灯</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QPushButton" name="ClearDisplay">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>清空显示</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QPushButton" name="SaveContent">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>保存内容</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="QPushButton" name="Help">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>帮助信息</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="text">
+         <string>波特率</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="BaudComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="currentIndex">
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5" colspan="3">
+       <widget class="QLineEdit" name="FilePath">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>56</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+         </font>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>数据位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="DataComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QCheckBox" name="DTRcheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>DTR</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QPushButton" name="OpenFile">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>打开文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QPushButton" name="SendFile">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>发送文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QPushButton" name="CloseFile">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>关闭文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>校验位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="ParityComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="5" rowspan="3" colspan="2">
+       <widget class="QTextEdit" name="textEdit">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>91</width>
+          <height>101</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>单击鼠标中键清空！</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="7" rowspan="3">
+       <widget class="QPushButton" name="SendData">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="toolTip">
+         <string>按Ctrl+Enter键发送数据。</string>
+        </property>
+        <property name="text">
+         <string>发送</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;停止位&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="StopComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>流控制</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="FCComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QCheckBox" name="TimecheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>定时发送</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="Time">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>54</width>
+          <height>56</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>请输入正整数!</string>
+        </property>
+        <property name="text">
+         <string>1000</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLabel" name="label_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>45</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>毫秒</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" colspan="2">
+       <widget class="QCheckBox" name="RTScheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>RTS</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" colspan="3">
+       <widget class="QCheckBox" name="HexReccheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>十六进制显示</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" colspan="3">
+       <widget class="QCheckBox" name="CRC16checkBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier 10 Pitch</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>CRC-16（MODBUS）</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" colspan="3">
+       <widget class="QCheckBox" name="HexSendcheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>十六进制发送</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>630</width>
-     <height>26</height>
-    </rect>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>25</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Courier 10 Pitch</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="sizeGripEnabled">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

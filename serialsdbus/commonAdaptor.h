@@ -9,8 +9,8 @@
  * before re-generating it.
  */
 
-#ifndef COMMONADAPTOR_H_1441273956
-#define COMMONADAPTOR_H_1441273956
+#ifndef COMMONADAPTOR_H_1441524011
+#define COMMONADAPTOR_H_1441524011
 
 #include <QtCore/QObject>
 #include <QtDBus/QtDBus>
@@ -37,11 +37,31 @@ class commonAdaptor: public QDBusAbstractAdaptor
 "    </method>\n"
 "    <method name=\"Dbus_wSettings_setValue\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
-"      <arg direction=\"in\" type=\"v\" name=\"value\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"value\"/>\n"
+"    </method>\n"
+"    <method name=\"Dbus_wSettings_setValue\">\n"
+"      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
+"      <arg direction=\"in\" type=\"b\" name=\"value\"/>\n"
+"    </method>\n"
+"    <method name=\"Dbus_wSettings_setValue\">\n"
+"      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"value\"/>\n"
+"    </method>\n"
+"    <method name=\"Dbus_wSettings_setValue\">\n"
+"      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"x\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"y\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"w\"/>\n"
+"      <arg direction=\"in\" type=\"i\" name=\"h\"/>\n"
 "    </method>\n"
 "    <method name=\"Dbus_wSettings_value\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
 "      <arg direction=\"out\" type=\"v\" name=\"value\"/>\n"
+"    </method>\n"
+"    <method name=\"Dbus_wSettings_RectValue\">\n"
+"      <arg direction=\"in\" type=\"s\" name=\"key\"/>\n"
+"      <arg direction=\"out\" type=\"a{i}\" name=\"value\"/>\n"
+"      <annotation value=\"QRect\" name=\"org.qtproject.QtDBus.QtTypeName.Out0\"/>\n"
 "    </method>\n"
 "  </interface>\n"
         "")
@@ -52,7 +72,11 @@ public:
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
     void Dbus_wSettings(const QString &path);
-    void Dbus_wSettings_setValue(const QString &key, const QDBusVariant &value);
+    QRect Dbus_wSettings_RectValue(const QString &key);
+    void Dbus_wSettings_setValue(const QString &key, int x, int y, int w, int h);
+    void Dbus_wSettings_setValue(const QString &key, int value);
+    void Dbus_wSettings_setValue(const QString &key, bool value);
+    void Dbus_wSettings_setValue(const QString &key, const QString &value);
     QDBusVariant Dbus_wSettings_value(const QString &key);
 Q_SIGNALS: // SIGNALS
 };

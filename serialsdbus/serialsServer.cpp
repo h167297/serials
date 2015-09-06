@@ -41,6 +41,11 @@ void serialsServer::Dbus_serial_close()
     exit(0);
 }
 
+bool serialsServer::Dbus_serial_isOpen()
+{
+    return serial->isOpen();
+}
+
 bool serialsServer::Dbus_serial_open()
 {
     if(serial->open(QIODevice::ReadWrite))
@@ -48,6 +53,11 @@ bool serialsServer::Dbus_serial_open()
         return true;
     }
     return false;
+}
+
+int serialsServer::Dbus_serial_pinoutSignals()
+{
+    return (int)serial->pinoutSignals();
 }
 
 void serialsServer::Dbus_serial_setBaudRate(int baudrate)
@@ -58,6 +68,11 @@ void serialsServer::Dbus_serial_setBaudRate(int baudrate)
 void serialsServer::Dbus_serial_setDataBits(int databit)
 {
     serial->setDataBits(static_cast<QSerialPort::DataBits>(databit));
+}
+
+bool serialsServer::Dbus_serial_setDataTerminalReady(bool set)
+{
+    return serial->setDataTerminalReady(set);
 }
 
 void serialsServer::Dbus_serial_setFlowControl(int flowcontrol)
@@ -73,6 +88,11 @@ void serialsServer::Dbus_serial_setParity(int parity)
 void serialsServer::Dbus_serial_setPortName(const QString &portname)
 {
     serial->setPortName(portname);
+}
+
+bool serialsServer::Dbus_serial_setRequestToSend(bool set)
+{
+    return serial->setRequestToSend(set);
 }
 
 void serialsServer::Dbus_serial_setStopBits(int stopbits)

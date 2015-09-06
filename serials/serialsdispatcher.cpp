@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
- * Author: Kobe Lee
+ * Copyright (C) 2014 ~ 2015 HANGZHOU DIANZI UNIVERSITY(HDU).
+ * Author: hening
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ serialsDispatcher::serialsDispatcher(QObject *parent) :
     QObject(parent)
 {
     iface = new QDBusInterface("org.freedesktop.serials",
-                               "/",
-                               "org.freedesktop.serials",
+                               "/org/freedesktop/port",
+                               "org.freedesktop.port",
                                QDBusConnection::systemBus());
 }
 
@@ -92,5 +92,29 @@ QByteArray serialsDispatcher::readAll()
 {
     QDBusReply<QByteArray> reply = iface->call("Dbus_serial_readAll");
     return reply.value();
+}
+
+bool serialsDispatcher::isOpen()
+{
+    QDBusReply<bool> reply = iface->call("Dbus_serial_isOpen");
+    return reply.value();
+}
+
+bool serialsDispatcher::setDataTerminalReady(bool set)
+{
+    QDBusReply<bool> reply = iface->call("Dbus_serial_setDataTerminalReady",set);
+    return reply.value();
+}
+
+bool serialsDispatcher::setRequestToSend(bool set)
+{
+    QDBusReply<bool> reply = iface->call("Dbus_serial_setRequestToSend",set);
+    return reply.value();
+}
+
+QSerialPort::PinoutSignals serialsDispatcher::pinoutSignals()
+{
+    QDBusReply<int> reply = iface->call("Dbus_serial_pinoutSignals");
+    return (QSerialPort::PinoutSignals)reply.value();
 }
 

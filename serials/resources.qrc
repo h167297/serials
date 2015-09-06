@@ -1,5 +1,33 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
-        <file>wICO.png</file>
+    <qresource prefix="/">
+        <file>image/add-line_horizontal.png</file>
+        <file>image/add-line_vertical.png</file>
+        <file>image/array_down.png</file>
+        <file>image/black.css</file>
+        <file>image/blue.css</file>
+        <file>image/error.png</file>
+        <file>image/Font Awesome Cheatsheet.png</file>
+        <file>image/fontawesome-webfont.ttf</file>
+        <file>image/gray.css</file>
+        <file>image/info.png</file>
+        <file>image/navy.css</file>
+        <file>image/qt_zh_CN.qm</file>
+        <file>image/question.png</file>
+        <file>image/radio_normal.png</file>
+        <file>image/radio_selected.png</file>
+        <file>image/sub-line_horizontal.png</file>
+        <file>image/sub-line_vertical.png</file>
+        <file>image/Indicator_red.png</file>
+        <file>image/Indicator_green.png</file>
+        <file>image/Indicator_gray.png</file>
+        <file>image/information.png</file>
+        <file>image/checkbox_checked.png</file>
+        <file>image/checkbox_unchecked.png</file>
+        <file>image/checkbox_unchecked_hover.png</file>
+        <file>image/checkbox_checked_hover.png</file>
+        <file>image/SerialsUpdate.txt</file>
+        <file>image/RS232_DB9.png</file>
+        <file>image/diamond.png</file>
+        <file>image/appICO.png</file>
     </qresource>
 </RCC>

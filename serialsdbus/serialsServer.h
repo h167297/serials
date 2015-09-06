@@ -31,16 +31,20 @@ public:
 public slots:
     void Dbus_serial_clear();
     void Dbus_serial_close();
+    bool Dbus_serial_isOpen();
     bool Dbus_serial_open();
+    int Dbus_serial_pinoutSignals();
+    QByteArray Dbus_serial_readAll();
     void Dbus_serial_setBaudRate(int baudrate);
     void Dbus_serial_setDataBits(int databit);
+    bool Dbus_serial_setDataTerminalReady(bool set);
     void Dbus_serial_setFlowControl(int flowcontrol);
     void Dbus_serial_setParity(int parity);
     void Dbus_serial_setPortName(const QString &portname);
+    bool Dbus_serial_setRequestToSend(bool set);
     void Dbus_serial_setStopBits(int stopbits);
     void Dbus_serial_write(const QByteArray &data);
-    void Dbus_serial_write(int data,int len);
-    QByteArray Dbus_serial_readAll();
+    void Dbus_serial_write(int data, int len);
 public:
     QSerialPort *serial;
 };

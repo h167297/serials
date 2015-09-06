@@ -42,6 +42,10 @@ public:
     void write(const int &data, const int &len);
     void write(const QByteArray &data);
     QByteArray readAll();
+    bool isOpen();
+    bool setDataTerminalReady(bool set);
+    bool setRequestToSend(bool set);
+    QSerialPort::PinoutSignals pinoutSignals();
 public:
     QDBusInterface *iface;
 };

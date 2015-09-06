@@ -14,12 +14,22 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    serialsdispatcher.cpp
+    serialsdispatcher.cpp \
+    frmmessagebox.cpp \
+    iconhelper.cpp \
+    scanthread.cpp \
+    commondispatcher.cpp
 
 HEADERS  += mainwindow.h \
-    serialsdispatcher.h
+    serialsdispatcher.h \
+    frmmessagebox.h \
+    iconhelper.h \
+    myhelper.h \
+    scanthread.h \
+    commondispatcher.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    frmmessagebox.ui
 
 RESOURCES += \
     resources.qrc

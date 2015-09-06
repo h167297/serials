@@ -1,4 +1,5 @@
 #!/bin/sh
+#DEBHELPER#
 set -e
 libpath="/usr/lib/serials"
 qtlibpath="/usr/lib/x86_64-linux-gnu"
@@ -36,80 +37,6 @@ chmod +x ${libpath}/serials.sh
 chmod +x ${libpath}/serialsdbus.sh
 chmod +x ${bin}/serials
 chmod +x ${sbin}/serialsdbus
-
-#库的安装
-#if [ -f "${qtlibpath}/libQt5SerialPort.so.5.3.3" ] && [ -f "${qtlibpath}/libQt5SerialPort.so.5" ];then
-#	rm -f ${libpath}/libQt5SerialPort.so.5.3.3
-#else
-	 ln -s ${libpath}/libQt5SerialPort.so.5.3.3  ${libpath}/libQt5SerialPort.so.5
-#fi
-
-#if [ -f "${qtlibpath}/libQt5Core.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Core.so.5" ];then
-#	rm -f ${libpath}/libQt5Core.so.5.2.1
-#else
-	 ln -s ${libpath}/libQt5Core.so.5.2.1  ${libpath}/libQt5Core.so.5
-#fi
-
-#if [ -f "${qtlibpath}/libQt5DBus.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5DBus.so.5" ];then
-#	rm -f ${libpath}/libQt5DBus.so.5.2.1
-#else
-	 ln -s ${libpath}/libQt5DBus.so.5.2.1 ${libpath}/libQt5DBus.so.5
-#fi
-
-#if [ -f "${qtlibpath}/libQt5Gui.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Gui.so.5" ];then
-#	rm -f ${libpath}/libQt5Gui.so.5.2.1
-#else
-	 ln -s ${libpath}/libQt5Gui.so.5.2.1 ${libpath}/libQt5Gui.so.5
-#fi
-
-#if [ -f "${qtlibpath}/libQt5Network.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Network.so.5" ];then
-#	rm -f ${libpath}/libQt5Network.so.5.2.1
-#else
-	 ln -s ${libpath}/libQt5Network.so.5.2.1 ${libpath}/libQt5Network.so.5
-#fi
-
-#if [ -f "${qtlibpath}/libQt5Widgets.so.5.2.1" ] && [ -f "${qtlibpath}/libQt5Widgets.so.5" ];then
-#	rm -f ${libpath}/libQt5Widgets.so.5.2.1 
-#else
-	 ln -s ${libpath}/libQt5Widgets.so.5.2.1 ${libpath}/libQt5Widgets.so.5
-#fi
-
-#插件安装
-#if [ -d "${pluginspath}/accessiblebridge" ] || [ -f  "${bin}/accessiblebridge" ];then
-#	rm -rf ${libpath}/accessiblebridge
-#else
-#	ln -s ${libpath}/accessiblebridge ${bin}/
-#fi
-
-#if [ -d "${pluginspath}/generic" ] || [ -f  "${bin}/generic" ];then
-#	rm -rf ${libpath}/generic
-#else 
-#	ln -s ${libpath}/generic ${bin}/
-#fi
-
-#if [ -d "${pluginspath}/iconengines" ] || [ -f  "${bin}/iconengines" ];then
-#	rm -rf ${libpath}/iconengines
-#else
-#	ln -s ${libpath}/iconengines ${bin}/
-#fi
-
-#if [ -d "${pluginspath}/platforminputcontexts" ] || [ -f  "${bin}/platforminputcontexts" ];then
-#	rm -rf ${libpath}/platforminputcontexts
-#else 
-#	ln -s ${libpath}/platforminputcontexts ${bin}/
-#fi
-
-#if [ -d "${pluginspath}/platforms" ] || [ -f  "${bin}/platforms" ];then
-#	rm -rf ${libpath}/platforms
-#else
-# 	ln -s ${libpath}/platforms ${bin}/
-#fi
-
-#if [ -d "${pluginspath} /platformthemes" ] || [ -f  "${bin}/platformthemes" ];then
-#	rm -rf ${libpath}/platformthemes
-#else
-#	ln -s ${libpath}/platformthemes ${bin}/ 
-#fi
 
 unset libpath
 unset qtlibpath

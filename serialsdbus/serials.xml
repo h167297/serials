@@ -36,6 +36,20 @@
    <method name="Dbus_serial_readAll">
     <arg name="response" type="s" direction="out" />
   </method>
+  <method name="Dbus_serial_isOpen">
+   <arg name="response" type="b" direction="out" />
+ </method>
+ <method name="Dbus_serial_setDataTerminalReady">
+  <arg name="response" type="b" direction="out" />
+  <arg name="set" type="b" direction="in" />
+ </method>
+ <method name="Dbus_serial_setRequestToSend">
+ <arg name="response" type="b" direction="out" />
+ <arg name="set" type="b" direction="in" />
+ </method>
+ <method name="Dbus_serial_pinoutSignals">
+ <arg name="response" type="i" direction="out" />
+ </method>
   <signal name="Dbus_serial">
   </signal>
   </interface>

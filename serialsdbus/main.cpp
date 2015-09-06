@@ -17,6 +17,8 @@
 
 #include "serialsAdaptor.h"
 #include "serialsServer.h"
+#include "commonAdaptor.h"
+#include "commonserver.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,8 +26,14 @@ int main(int argc, char *argv[])
     serialsServer* server = new serialsServer;
     serialsAdaptor* adaptor = new serialsAdaptor(server);
     QObject::connect(server->serial,SIGNAL(readyRead()),adaptor,SLOT(Dbus_readSerial()));
+
+    commonServer *c_server = new commonServer;
+    commonAdaptor *c_adaptor = new commonAdaptor(c_server);//这句一定需要，否则DBUS总线上不会有接口
+    c_adaptor = c_adaptor;//就是防止编译器出警告而已
     QDBusConnection connection = QDBusConnection::systemBus();
-    connection.registerService("org.freedesktop.serials");
-    connection.registerObject("/", server);
+    connection.registerService("org.freedesktop.serials");//注册服务，conf文件夹中的三个文件中的名称
+    connection.registerObject("/org/freedesktop/port", server);//注册对象
+    connection.registerObject("/org/freedesktop/common", c_server);//注册对象
+
     return a.exec();
 }

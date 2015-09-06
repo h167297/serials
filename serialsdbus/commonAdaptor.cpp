@@ -39,10 +39,36 @@ void commonAdaptor::Dbus_wSettings(const QString &path)
     QMetaObject::invokeMethod(parent(), "Dbus_wSettings", Q_ARG(QString, path));
 }
 
-void commonAdaptor::Dbus_wSettings_setValue(const QString &key, const QDBusVariant &value)
+QRect commonAdaptor::Dbus_wSettings_RectValue(const QString &key)
+{
+    // handle method call org.freedesktop.common.Dbus_wSettings_RectValue
+    QRect value;
+    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_RectValue", Q_RETURN_ARG(QRect, value), Q_ARG(QString, key));
+    return value;
+}
+
+void commonAdaptor::Dbus_wSettings_setValue(const QString &key, int x, int y, int w, int h)
 {
     // handle method call org.freedesktop.common.Dbus_wSettings_setValue
-    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_setValue", Q_ARG(QString, key), Q_ARG(QDBusVariant, value));
+    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_setValue", Q_ARG(QString, key), Q_ARG(int, x), Q_ARG(int, y), Q_ARG(int, w), Q_ARG(int, h));
+}
+
+void commonAdaptor::Dbus_wSettings_setValue(const QString &key, int value)
+{
+    // handle method call org.freedesktop.common.Dbus_wSettings_setValue
+    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_setValue", Q_ARG(QString, key), Q_ARG(int, value));
+}
+
+void commonAdaptor::Dbus_wSettings_setValue(const QString &key, bool value)
+{
+    // handle method call org.freedesktop.common.Dbus_wSettings_setValue
+    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_setValue", Q_ARG(QString, key), Q_ARG(bool, value));
+}
+
+void commonAdaptor::Dbus_wSettings_setValue(const QString &key, const QString &value)
+{
+    // handle method call org.freedesktop.common.Dbus_wSettings_setValue
+    QMetaObject::invokeMethod(parent(), "Dbus_wSettings_setValue", Q_ARG(QString, key), Q_ARG(QString, value));
 }
 
 QDBusVariant commonAdaptor::Dbus_wSettings_value(const QString &key)

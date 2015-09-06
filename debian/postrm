@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-
+#DEBHELPER#
 libpath="/usr/lib/serials"
 qtlibpath="/usr/lib/x86_64-linux-gnu"
  bin="/usr/bin"

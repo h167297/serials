@@ -1,4 +1,4 @@
-serials/wICO.png /usr/share/pixmaps
+serials/appICO.png /usr/share/pixmaps
 
 serialport-assistant.desktop /usr/share/applications
 
@@ -8,20 +8,4 @@ serialsdbus/serials /usr/bin
 
 serialsdbus/serialsdbus.sh /usr/lib/serials
 serials/serialsdbus /usr/sbin
-
-serials.conf /etc/ld.so.conf.d
-
-libQt5SerialPort.so.5.3.3 /usr/lib/serials
-libQt5Core.so.5.2.1 /usr/lib/serials
-libQt5DBus.so.5.2.1 /usr/lib/serials
-libQt5Gui.so.5.2.1 /usr/lib/serials
-libQt5Network.so.5.2.1 /usr/lib/serials
-libQt5Widgets.so.5.2.1 /usr/lib/serials
-
-accessiblebridge /usr/lib/serials
-generic  /usr/lib/serials
-iconengines /usr/lib/serials
-platforminputcontexts /usr/lib/serials
-platforms /usr/lib/serials
-platformthemes /usr/lib/serials
 

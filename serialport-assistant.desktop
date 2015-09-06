@@ -1,22 +1,38 @@
 [Desktop Entry]
-Version=1.0
-Name=serialport-assistant
 
-Name[zh_CN]=串口助手
+Type = Application
 
-Comment=serialport-assistant
+Version = 1.0
 
-Comment[zh_CN]=串口助手
+Name = serialport-assistant
 
-GenericName=serialport-assistant
+Name[zh_CN] = 串口助手
 
-GenericName[zh_CN]=串口助手
+GenericName = serialport-assistant
 
-Exec=/usr/bin/serials
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-Icon=/usr/share/pixmaps/wICO.png
-Categories=GNOME;GTK;Graphics;RasterGraphics;Viewer;
+GenericName[zh_CN] = 串口助手
 
-StartupNotify=true
+NoDisplay = false
+
+Comment = serial port debug tool
+
+Comment[zh_CN] = 串口调试工具
+
+Icon = /usr/share/pixmaps/appICO.png
+
+Hidden = false
+
+TryExec = serials
+
+Exec = /usr/bin/serials
+
+Path = /usr/bin
+
+Terminal = false
+
+X-MultipleArgs = false
+
+Categories = Graphics;RasterGraphics;Viewer;
+
+StartupNotify = true
+
