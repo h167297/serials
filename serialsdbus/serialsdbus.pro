@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = serialsdbus
-QT += core dbus
+QT += core dbus serialport
 
 inst1.files += conf/org.freedesktop.serials.service
 inst1.path = /usr/share/dbus-1/system-services/
@@ -26,6 +26,3 @@ SOURCES += main.cpp \
     serialsServer.cpp \
     commonserver.cpp \
     commonAdaptor.cpp
-
-
-unix|win32: LIBS += -lQt5SerialPort

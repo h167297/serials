@@ -6,7 +6,7 @@
 
 QT       += core gui network dbus
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport
 
 TARGET = serials
 TEMPLATE = app
@@ -34,7 +34,4 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     resources.qrc
 
-RC_FILE = appICO.rc
-
-
-unix|win32: LIBS += -lQt5SerialPort
+RC_FILE = appinfo.rc
