@@ -10,7 +10,7 @@
 
 <h2 id='1'> 一、程序介绍 </h2>
 
-1、该程序是一个串口调试工具，支持丰富的串口操作。包含linux和windows两个版本，体验一致。linux版使用dbus成功实现程序的免密特权操作。
+1、该程序是一个串口调试工具，支持丰富的串口操作。包含linux和windows两个版本，体验一致。linux版使用dbus实现程序的免密特权操作。
 
 2、linux版本的理念、功能介绍、开发环境、安装方式、系统支持情况等参见：http://blog.csdn.net/he_ning/article/details/48272395
 
