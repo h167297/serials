@@ -1,5 +1,42 @@
 # serials
-The serials is a very useful serial port debug tool.
+
+**The serials is a very useful serial port debug tool.**
+
+[一、程序介绍](#1) <br />
+[二、目录结构](#2) <br />
+[三、编译方法](#3) <br />
+[四、修改记录](#4) <br />
+
+
+<h2 id='1'> 一、程序介绍 </h2>
+
+1、该程序是一个串口调试工具，支持丰富的串口操作。包含linux和windows两个版本，体验一致。linux版使用dbus成功实现程序的免密特权操作。
+
+2、linux版本的理念、功能介绍、开发环境、安装方式、系统支持情况等参见：http://blog.csdn.net/he_ning/article/details/48272395
+
+3、windows版本开发环境为windows7,Qt5.5.0。
+
+4、linux和windows版本共用源码，部分操作系统差异实现使用Q_OS_WIN和Q_OS_LINUX宏隔离。
+
+<h2 id='2'> 二、目录结构 </h2>
+
+1、serials/ 目录下为serial.pro主工程内容(相当于visual studio的解决方案)，使用Qt Creator 打开可以看到目录树，
+   包含serials.pro和serialsdbus.pro两个子工程。
+   
+2、serials/serials/ 目录下为serials.pro子工程内容，包含实现该软件前台功能的资源，UI文件，源码；windows版本仅涉及该部分代码。
+
+3、serials/serialsdbus/ 目录下为serialsdbus.pro子工程内容，linux专用，包含dbus守护进程源码，进程以root权限自动运行，用于特权操作。
+   dbus介绍：http://blog.csdn.net/he_ning/article/details/42614937
+   
+4、serials/debian/ 目录下包含deb包的配置信息和规定的目录结构。deb包介绍：http://blog.csdn.net/he_ning/article/details/46341443
+
+<h2 id='3'> 三、编译方法 </h2>
+
+1、推荐使用Qt Creator打开工程直接编译，linux和windows下都可以装Qt Creator。
+
+2、如果不用IDE（不推荐，本就是个图形界面软件），可以使用qmake serial.pro 根据Qt工程生成makefile，再make即可。
+
+<h2 id='4'> 四、修改记录 </h2>
 
 V1.0.4 更新内容：
 1、增加了串口状态指示灯
