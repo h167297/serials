@@ -45,6 +45,8 @@
    sudo apt-get install serials<br />
 2、离线安装：支持ubuntu17.04 http://download.csdn.net/download/h167297/9838997
 
+3、装好后会在桌面生成程序图标，双击打开即可，也可以在终端输入serials启动（不推荐，该程序的宗旨是完全摆脱命令）。
+
 <h2 id='5'> 五、修改记录 </h2>
 
 V1.0.4 更新内容：
