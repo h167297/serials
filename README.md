@@ -5,7 +5,8 @@
 [一、程序介绍](#1) <br />
 [二、目录结构](#2) <br />
 [三、编译方法](#3) <br />
-[四、修改记录](#4) <br />
+[四、安装体验](#4) <br />
+[五、修改记录](#5) <br />
 
 
 <h2 id='1'> 一、程序介绍 </h2>
@@ -36,7 +37,15 @@
 
 2、如果不用IDE（不推荐，本就是个图形界面软件），可以使用qmake serial.pro 根据Qt工程生成makefile，再make即可。
 
-<h2 id='4'> 四、修改记录 </h2>
+<h2 id='4'> 四、安装体验 </h2>
+
+1、在线安装：支持ubuntu14.04，ubuntu15.04，ubuntu16.04,ubuntu16.10，ubuntu17.04, ubuntu17.10 <br />
+   sudo add-apt-repository ppa:h167297/hening<br />
+   sudo apt-get update<br /> 
+   sudo apt-get install serials<br />
+2、离线安装：支持ubuntu17.04 http://download.csdn.net/download/h167297/9838997
+
+<h2 id='5'> 五、修改记录 </h2>
 
 V1.0.4 更新内容：
 1、增加了串口状态指示灯
