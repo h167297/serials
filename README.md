@@ -39,7 +39,7 @@
 
 <h2 id='4'> 四、安装体验 </h2>
 
-1、在线安装：支持ubuntu14.04，ubuntu15.04，ubuntu16.04,ubuntu16.10，ubuntu17.04, ubuntu17.10,ubuntu18.04, ubuntu19.04 ubuntu19.10,ubuntu20.04 <br />
+1、在线安装：支持ubuntu14.04, ubuntu15.04, ubuntu16.04, ubuntu16.10, ubuntu17.04, ubuntu17.10, ubuntu18.04, ubuntu19.04, ubuntu19.10,  ubuntu20.04 <br />
 
    sudo add-apt-repository ppa:h167297/hening<br />
    sudo apt-get update<br /> 
