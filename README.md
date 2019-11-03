@@ -46,7 +46,7 @@
    sudo apt-get install serials<br />
    
 2、离线安装：<br />
-尚在维护的版本
+尚在维护的版本<br />
 [deepin15.11(am64)](https://download.csdn.net/download/h167297/11935889)<br />
 [ubuntu14.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_amd64.deb)<br />
 [ubuntu14.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_i386.deb)<br />
