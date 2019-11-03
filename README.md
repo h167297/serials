@@ -47,7 +47,8 @@
    
 2、离线安装：<br />
 尚在维护的版本<br />
-[deepin15.11(am64)](https://download.csdn.net/download/h167297/11935889)<br />
+[windows7及以上](https://pan.baidu.com/s/13Ebj3Qkb0Z05GqEVBSumHA) 提取码: 9f23 解压后找到 【串口助手.exe】 双击运行。<br />
+[deepin15.11(am64)](https://pan.baidu.com/s/1oqhK_IAfYc6IhIAMFRlXjQ) 提取码:gcq7<br />
 [ubuntu14.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_amd64.deb)<br />
 [ubuntu14.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_i386.deb)<br />
 [ubuntu16.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~xenial_amd64.deb)<br />
