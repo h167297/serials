@@ -45,9 +45,40 @@
    sudo apt-get update<br /> 
    sudo apt-get install serials<br />
    
-2、离线安装：deepin15.11离线包 https://download.csdn.net/download/h167297/11935889<br />
-[ubuntu16.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+build/18000706/+files/serials_1.0.13~xenial_amd64.deb)<br />
+2、离线安装：
+尚在维护的版本
+[deepin15.11(am64)](https://download.csdn.net/download/h167297/11935889)<br />
+[ubuntu14.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_amd64.deb)<br />
+[ubuntu14.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~trusty_i386.deb)<br />
+[ubuntu16.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~xenial_amd64.deb)<br />
 [ubuntu16.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~xenial_i386.deb)<br />
+[ubuntu18.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~bionic_amd64.deb)<br />
+[ubuntu18.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~bionic_i386.deb)<br />
+[ubuntu19.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~disco_amd64.deb)<br />
+[ubuntu19.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~disco_i386.deb)<br />
+[ubuntu19.10(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~eoan_amd64.deb)<br />
+[ubuntu19.10(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~eoan_i386.deb)<br />
+[ubuntu20.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~focal_amd64.deb)<br />
+[ubuntu20.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~focal_i386.deb)<br />
+
+已经过维护期的版本（BUG修复不能官方发布了,指apt-get install方式）
+
+已知BUG:
+打不开串口：由于/usr/sbin/serialsbus脚本换行格式为DOS导致的，需要执行dos2unix转换为UNIX风格回车换行符。
+软件出了二进制包外，为了打开串口时不需要root认证输密码，所以一共用了4个shell脚本来程序的前台和后台启动。它们分别是：
+/usr/bin/serials
+/usr/sbin/serialsdbus
+/usr/lib/serials/serials.sh
+/usr/lib/serials/serialsdbus.sh
+以serials为名的脚本有问题或格式不对，会导致程序打不开，以serialsdbus为名的脚本有问题或格式不对，会导致串口打不开。
+
+[ubuntu15.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.5vivid_amd64.deb)<br />
+[ubuntu15.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.5vivid_i386.deb)<br />
+[ubuntu16.10(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.5yakkety_amd64.deb)<br />
+[ubuntu16.10(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.5yakkety_i386.deb)<br />
+[ubuntu17.10(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.11~artful_amd64.deb)<br />
+[ubuntu17.10(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.11~artful_i386.deb)<br />
+
 3、装好后会在桌面生成程序图标，双击打开即可，也可以在终端输入serials启动（不推荐，该程序的宗旨是完全摆脱命令）。
 
 <h2 id='5'> 五、修改记录 </h2>
