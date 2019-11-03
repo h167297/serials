@@ -61,10 +61,9 @@
 [ubuntu20.04(amd64)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~focal_amd64.deb)<br />
 [ubuntu20.04(i386)](https://launchpad.net/~h167297/+archive/ubuntu/hening/+files/serials_1.0.13~focal_i386.deb)<br />
 
-已经过维护期的版本（BUG修复不能官方发布了,指apt-get install方式）
-
-已知BUG:
-打不开串口：由于/usr/sbin/serialsbus脚本换行格式为DOS导致的，需要执行dos2unix转换为UNIX风格回车换行符。
+**下面是已经过维护期的版本（BUG修复不能官方发布了,指apt-get install方式）**
+**已知BUG:**
+**打不开串口：由于/usr/sbin/serialsbus脚本换行格式为DOS导致的，需要执行dos2unix转换为UNIX风格回车换行符。**
 软件出了二进制包外，为了打开串口时不需要root认证输密码，所以一共用了4个shell脚本来程序的前台和后台启动。它们分别是：
 /usr/bin/serials
 /usr/sbin/serialsdbus
